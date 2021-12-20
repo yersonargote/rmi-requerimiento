@@ -1,8 +1,9 @@
 package sop_rmi;
 
 public class Credencial implements java.io.Serializable {
-    String usuario;
-    String clave;
+    protected String usuario;
+    protected String clave;
+    protected int rol;
 
     public Credencial(String usuario, String clave) {
         this.usuario = usuario;
@@ -23,5 +24,9 @@ public class Credencial implements java.io.Serializable {
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    public int getRol() {
+        return this.rol;
     }
 }

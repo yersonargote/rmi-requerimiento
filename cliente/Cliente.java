@@ -2,7 +2,6 @@ package cliente;
 
 import cliente.utilidades.Consola;
 import cliente.utilidades.Registro;
-import sop_rmi.GestionUsuarios;
 import sop_rmi.IGestionUsuarios;
 
 public class Cliente {

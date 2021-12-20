@@ -1,25 +1,16 @@
 package sop_rmi;
 
 public class Personal extends Credencial {
-    String tipoId;
-    int id;
-    String nombreCompleto;
-    String ocupacion;
+    private int id;
+    private String nombreCompleto;
+    private String ocupacion;
 
-    public Personal(String usuario, String clave, String tipoId, int id, String nombreCompleto, String ocupacion) {
+    public Personal(String usuario, String clave, int id, String nombreCompleto, String ocupacion) {
         super(usuario, clave);
-        this.tipoId = tipoId;
         this.id = id;
         this.nombreCompleto = nombreCompleto;
         this.ocupacion = ocupacion;
-    }
-
-    public String getTipoId() {
-        return tipoId;
-    }
-
-    public void setTipoId(String tipoId) {
-        this.tipoId = tipoId;
+        this.setRol();
     }
 
     public int getId() {
@@ -42,8 +33,12 @@ public class Personal extends Credencial {
         return ocupacion;
     }
 
-    public int getRol() {
-        int rol = -1;
+    public void setOcupacion(String ocupacion) {
+        this.ocupacion = ocupacion;
+    }
+
+    private void setRol() {
+        int rol;
         switch (this.ocupacion) {
             case "admin":
                 rol = 0;
@@ -54,21 +49,10 @@ public class Personal extends Credencial {
             case "paf":
                 rol = 2;
                 break;
-            case "docente":
-                rol = 3;
-                break;
-            case "administrativo":
-                rol = 3;
-                break;
             default:
                 rol = -1;
                 break;
         }
-        return rol;
+        super.rol = rol;
     }
-
-    public void setOcupacion(String ocupacion) {
-        this.ocupacion = ocupacion;
-    }
-
 }

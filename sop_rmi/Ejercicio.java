@@ -1,10 +1,10 @@
 package sop_rmi;
 
 public class Ejercicio implements java.io.Serializable {
-    int id;
-    String nombre;
-    int repeticiones;
-    float peso;
+    private int id;
+    private String nombre;
+    private int repeticiones;
+    private float peso;
 
     public Ejercicio(int id, String nombre, int repeticiones, float peso) {
         this.id = id;

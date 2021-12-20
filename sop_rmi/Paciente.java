@@ -1,12 +1,12 @@
 package sop_rmi;
 
 public class Paciente extends Credencial {
-    int id;
-    String nombre;
-    String facultad;
-    String tipoUsuario;
-    String fechaIngreso;
-    String patologia;
+    private int id;
+    private String nombre;
+    private String facultad;
+    private String tipoUsuario;
+    private String fechaIngreso;
+    private String patologia;
 
     public Paciente(String usuario, String clave, int id, String nombre, String facultad, String tipoUsuario,
             String fechaIngreso, String patologia) {
@@ -17,6 +17,7 @@ public class Paciente extends Credencial {
         this.tipoUsuario = tipoUsuario;
         this.fechaIngreso = fechaIngreso;
         this.patologia = patologia;
+        super.rol = 3;
     }
 
     public int getId() {
