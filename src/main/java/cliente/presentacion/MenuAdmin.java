@@ -16,6 +16,10 @@ public class MenuAdmin {
     public MenuAdmin(IGestionUsuarios gestionUsuarios) {
         this.gestionUsuarios = gestionUsuarios;
     }
+
+    MenuAdmin() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public void mostrar() {
         String opcion = "";
@@ -77,7 +81,7 @@ public class MenuAdmin {
         } catch (NumberFormatException e) {
             System.out.println("Error al leer datos.");
         }
-        PersonalDTO personal = new PersonalDTO(usuario, clave, id, nombre, ocupacion);
+        PersonalDTO personal = new PersonalDTO("", id, nombre, ocupacion, usuario, clave);
         try {
             registrado = this.gestionUsuarios.registrarPersonal(personal);
         } catch (RemoteException ex) {

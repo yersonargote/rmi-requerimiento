@@ -97,11 +97,11 @@ public class GUIAbrirSesion extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
         pack();
@@ -111,17 +111,30 @@ public class GUIAbrirSesion extends javax.swing.JFrame {
         String usuario = this.txtUsuarioLogin.getText();
         String clave = this.txtClaveLogin.getText();
         int tipoUsuario = -1;
-        boolean logeado = false;
         CredencialDTO credencial = new CredencialDTO(usuario, clave);
         try{
             tipoUsuario = this.cliente.getGestor().abrirSesion(credencial);
-            logeado = (tipoUsuario >= 0 && tipoUsuario <= 3);
         }catch(RemoteException ex){}
-        if (logeado) {
-            // TODO: SWITCH para mostrar el menu de admin o secretaria o paf o paciente
-        } else {
-            this.lblMensajeErrorLogin.setText("Credenciales INCORRECTAS");
-        }
+        switch (tipoUsuario) {
+                        case 0:
+                            GUIMenuAdmin menuAdmin = new GUIMenuAdmin();
+                            menuAdmin.setCliente(cliente);
+                            this.setVisible(false);
+                            menuAdmin.setVisible(true);
+                            break;
+                        case 1:
+                            this.lblMensajeErrorLogin.setText("Secretaria NO Implementado");
+                            break;
+                        case 2:
+                            this.lblMensajeErrorLogin.setText("Paf NO Implementado");
+                            break;
+                        case 3:
+                            this.lblMensajeErrorLogin.setText("Paciente NO Implementado");
+                            break;
+                        default:
+                            this.lblMensajeErrorLogin.setText("Credenciales NO VALIDAS");
+                            break;
+                    }
     }//GEN-LAST:event_btnLoginActionPerformed
 
 //    /**

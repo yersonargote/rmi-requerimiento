@@ -6,16 +6,26 @@ package gestion_usuarios.dto;
  */
 
 public class PersonalDTO extends CredencialDTO {
+    private String tipoId;
     private int id;
     private String nombreCompleto;
     private String ocupacion;
 
-    public PersonalDTO(String usuario, String clave, int id, String nombreCompleto, String ocupacion) {
+    public PersonalDTO(String tipoId, int id, String nombreCompleto, String ocupacion, String usuario, String clave) {
         super(usuario, clave);
+        this.tipoId = tipoId;
         this.id = id;
         this.nombreCompleto = nombreCompleto;
         this.ocupacion = ocupacion;
         this.setRol();
+    }
+
+    public String getTipoId() {
+        return tipoId;
+    }
+
+    public void setTipoId(String tipoId) {
+        this.tipoId = tipoId;
     }
 
     public int getId() {

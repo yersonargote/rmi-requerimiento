@@ -1,9 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cliente.presentacion;
+
+import cliente.Cliente;
+import cliente.utilidades.Parse;
+import gestion_usuarios.dto.PersonalDTO;
+import java.rmi.RemoteException;
 
 /**
  *
@@ -27,26 +27,179 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        gbtnTipoIdReg = new javax.swing.ButtonGroup();
+        gbtnOcupacionReg = new javax.swing.ButtonGroup();
         tbpPrincipal = new javax.swing.JTabbedPane();
         pnlRegistrarPersonal = new javax.swing.JPanel();
+        pnlTituloReg = new javax.swing.JPanel();
+        lblTituloRegistrar = new javax.swing.JLabel();
+        pnlTipoIdReg = new javax.swing.JPanel();
+        pnlTipoIdRegIzq = new javax.swing.JPanel();
+        lblTipoId = new javax.swing.JLabel();
+        pnlTipoIdRegDere = new javax.swing.JPanel();
+        rbtnCCReg = new javax.swing.JRadioButton();
+        rbtnPasaporteReg = new javax.swing.JRadioButton();
+        rbtnTIReg = new javax.swing.JRadioButton();
+        pnlIdReg = new javax.swing.JPanel();
+        lblIdReg = new javax.swing.JLabel();
+        txtIdReg = new javax.swing.JTextField();
+        pnlNombreReg = new javax.swing.JPanel();
+        lblNombreReg = new javax.swing.JLabel();
+        txtNombreReg = new javax.swing.JTextField();
+        pnlOcupacionReg = new javax.swing.JPanel();
+        pnlOcupacionRegIzq = new javax.swing.JPanel();
+        lblOcupacionReg = new javax.swing.JLabel();
+        pnlOcupacionRegDere = new javax.swing.JPanel();
+        rbtnSecretariaReg = new javax.swing.JRadioButton();
+        rbtnPaf = new javax.swing.JRadioButton();
+        pnlUsuarioReg = new javax.swing.JPanel();
+        lblUsuarioReg = new javax.swing.JLabel();
+        txtUsuarioReg = new javax.swing.JTextField();
+        pnlClave = new javax.swing.JPanel();
+        lblClaveReg = new javax.swing.JLabel();
+        pssClaveReg = new javax.swing.JPasswordField();
+        pnlBotonRegistrar = new javax.swing.JPanel();
+        btnRegistrar = new javax.swing.JButton();
+        lblMensajeErrorReg = new javax.swing.JLabel();
         pnlModificarPersonal = new javax.swing.JPanel();
         pnlEliminarPersonal = new javax.swing.JPanel();
         pnlConsultarPersonal = new javax.swing.JPanel();
+        pnlTituloConsultar = new javax.swing.JPanel();
+        lblTituloConsultar = new javax.swing.JLabel();
+        pnlConsultaConsultar = new javax.swing.JPanel();
+        lblConsultaConsultar = new javax.swing.JLabel();
+        txtConsultaConsultar = new javax.swing.JTextField();
+        pnlInformacionConsultar = new javax.swing.JPanel();
+        lblNombreConsultar = new javax.swing.JLabel();
+        lblNombreConsultaRes = new javax.swing.JLabel();
+        lblOcupacionConsultar = new javax.swing.JLabel();
+        lblOcupacionConsultaRes = new javax.swing.JLabel();
+        lblUsuarioConsulta = new javax.swing.JLabel();
+        lblUsuarioConsultaRes = new javax.swing.JLabel();
+        pnlBotonConsultar = new javax.swing.JPanel();
+        btnConsultar = new javax.swing.JButton();
+        lblMensajeErrorConsultar = new javax.swing.JLabel();
         pnlListarPersonal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-        javax.swing.GroupLayout pnlRegistrarPersonalLayout = new javax.swing.GroupLayout(pnlRegistrarPersonal);
-        pnlRegistrarPersonal.setLayout(pnlRegistrarPersonalLayout);
-        pnlRegistrarPersonalLayout.setHorizontalGroup(
-            pnlRegistrarPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
-        );
-        pnlRegistrarPersonalLayout.setVerticalGroup(
-            pnlRegistrarPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 272, Short.MAX_VALUE)
-        );
+        tbpPrincipal.setPreferredSize(new java.awt.Dimension(500, 700));
+
+        pnlRegistrarPersonal.setLayout(new java.awt.GridLayout(8, 0));
+
+        pnlTituloReg.setLayout(new java.awt.GridLayout());
+
+        lblTituloRegistrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTituloRegistrar.setText("Registrar Personal");
+        pnlTituloReg.add(lblTituloRegistrar);
+
+        pnlRegistrarPersonal.add(pnlTituloReg);
+
+        pnlTipoIdReg.setLayout(new java.awt.GridLayout(1, 2));
+
+        pnlTipoIdRegIzq.setLayout(new java.awt.GridLayout());
+
+        lblTipoId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTipoId.setText("Tipo de Identificación");
+        pnlTipoIdRegIzq.add(lblTipoId);
+
+        pnlTipoIdReg.add(pnlTipoIdRegIzq);
+
+        pnlTipoIdRegDere.setLayout(new java.awt.GridLayout(3, 0));
+
+        gbtnTipoIdReg.add(rbtnCCReg);
+        rbtnCCReg.setSelected(true);
+        rbtnCCReg.setText("Cedula de Ciudadania");
+        pnlTipoIdRegDere.add(rbtnCCReg);
+
+        gbtnTipoIdReg.add(rbtnPasaporteReg);
+        rbtnPasaporteReg.setText("Pasaporte");
+        pnlTipoIdRegDere.add(rbtnPasaporteReg);
+
+        gbtnTipoIdReg.add(rbtnTIReg);
+        rbtnTIReg.setText("Tarjeta de Identidad");
+        pnlTipoIdRegDere.add(rbtnTIReg);
+
+        pnlTipoIdReg.add(pnlTipoIdRegDere);
+
+        pnlRegistrarPersonal.add(pnlTipoIdReg);
+
+        pnlIdReg.setLayout(new java.awt.GridLayout());
+
+        lblIdReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIdReg.setText("ID");
+        pnlIdReg.add(lblIdReg);
+
+        txtIdReg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        pnlIdReg.add(txtIdReg);
+
+        pnlRegistrarPersonal.add(pnlIdReg);
+
+        pnlNombreReg.setLayout(new java.awt.GridLayout());
+
+        lblNombreReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNombreReg.setText("Nombre Completo");
+        pnlNombreReg.add(lblNombreReg);
+        pnlNombreReg.add(txtNombreReg);
+
+        pnlRegistrarPersonal.add(pnlNombreReg);
+
+        pnlOcupacionReg.setLayout(new java.awt.GridLayout());
+
+        pnlOcupacionRegIzq.setLayout(new java.awt.GridLayout());
+
+        lblOcupacionReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblOcupacionReg.setText("Ocupación");
+        pnlOcupacionRegIzq.add(lblOcupacionReg);
+
+        pnlOcupacionReg.add(pnlOcupacionRegIzq);
+
+        pnlOcupacionRegDere.setLayout(new java.awt.GridLayout(2, 0));
+
+        gbtnOcupacionReg.add(rbtnSecretariaReg);
+        rbtnSecretariaReg.setSelected(true);
+        rbtnSecretariaReg.setText("Secretaria");
+        pnlOcupacionRegDere.add(rbtnSecretariaReg);
+
+        gbtnOcupacionReg.add(rbtnPaf);
+        rbtnPaf.setText("Profesional de Acondicionamiento Fisico");
+        pnlOcupacionRegDere.add(rbtnPaf);
+
+        pnlOcupacionReg.add(pnlOcupacionRegDere);
+
+        pnlRegistrarPersonal.add(pnlOcupacionReg);
+
+        pnlUsuarioReg.setLayout(new java.awt.GridLayout());
+
+        lblUsuarioReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUsuarioReg.setText("Usuario");
+        pnlUsuarioReg.add(lblUsuarioReg);
+        pnlUsuarioReg.add(txtUsuarioReg);
+
+        pnlRegistrarPersonal.add(pnlUsuarioReg);
+
+        pnlClave.setLayout(new java.awt.GridLayout());
+
+        lblClaveReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblClaveReg.setText("Clave");
+        pnlClave.add(lblClaveReg);
+        pnlClave.add(pssClaveReg);
+
+        pnlRegistrarPersonal.add(pnlClave);
+
+        pnlBotonRegistrar.setLayout(new java.awt.GridLayout(2, 0));
+
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+        pnlBotonRegistrar.add(btnRegistrar);
+        pnlBotonRegistrar.add(lblMensajeErrorReg);
+
+        pnlRegistrarPersonal.add(pnlBotonRegistrar);
 
         tbpPrincipal.addTab("Registar", pnlRegistrarPersonal);
 
@@ -54,11 +207,11 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         pnlModificarPersonal.setLayout(pnlModificarPersonalLayout);
         pnlModificarPersonalLayout.setHorizontalGroup(
             pnlModificarPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
+            .addGap(0, 430, Short.MAX_VALUE)
         );
         pnlModificarPersonalLayout.setVerticalGroup(
             pnlModificarPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 272, Short.MAX_VALUE)
+            .addGap(0, 552, Short.MAX_VALUE)
         );
 
         tbpPrincipal.addTab("Modificar", pnlModificarPersonal);
@@ -67,25 +220,71 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         pnlEliminarPersonal.setLayout(pnlEliminarPersonalLayout);
         pnlEliminarPersonalLayout.setHorizontalGroup(
             pnlEliminarPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
+            .addGap(0, 430, Short.MAX_VALUE)
         );
         pnlEliminarPersonalLayout.setVerticalGroup(
             pnlEliminarPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 272, Short.MAX_VALUE)
+            .addGap(0, 552, Short.MAX_VALUE)
         );
 
         tbpPrincipal.addTab("Eliminar", pnlEliminarPersonal);
 
-        javax.swing.GroupLayout pnlConsultarPersonalLayout = new javax.swing.GroupLayout(pnlConsultarPersonal);
-        pnlConsultarPersonal.setLayout(pnlConsultarPersonalLayout);
-        pnlConsultarPersonalLayout.setHorizontalGroup(
-            pnlConsultarPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
-        );
-        pnlConsultarPersonalLayout.setVerticalGroup(
-            pnlConsultarPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 272, Short.MAX_VALUE)
-        );
+        pnlConsultarPersonal.setLayout(new java.awt.GridLayout(3, 0));
+
+        pnlTituloConsultar.setLayout(new java.awt.GridLayout(2, 0));
+
+        lblTituloConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTituloConsultar.setText("Consultar Personal");
+        pnlTituloConsultar.add(lblTituloConsultar);
+
+        pnlConsultaConsultar.setLayout(new java.awt.GridLayout(1, 2));
+
+        lblConsultaConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblConsultaConsultar.setText("Ingrese ID del personal");
+        pnlConsultaConsultar.add(lblConsultaConsultar);
+        pnlConsultaConsultar.add(txtConsultaConsultar);
+
+        pnlTituloConsultar.add(pnlConsultaConsultar);
+
+        pnlConsultarPersonal.add(pnlTituloConsultar);
+
+        pnlInformacionConsultar.setLayout(new java.awt.GridLayout(3, 2));
+
+        lblNombreConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNombreConsultar.setText("Nombre Completo");
+        pnlInformacionConsultar.add(lblNombreConsultar);
+
+        lblNombreConsultaRes.setText("-");
+        pnlInformacionConsultar.add(lblNombreConsultaRes);
+
+        lblOcupacionConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblOcupacionConsultar.setText("Ocupación");
+        pnlInformacionConsultar.add(lblOcupacionConsultar);
+
+        lblOcupacionConsultaRes.setText("-");
+        pnlInformacionConsultar.add(lblOcupacionConsultaRes);
+
+        lblUsuarioConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUsuarioConsulta.setText("Usuario");
+        pnlInformacionConsultar.add(lblUsuarioConsulta);
+
+        lblUsuarioConsultaRes.setText("-");
+        pnlInformacionConsultar.add(lblUsuarioConsultaRes);
+
+        pnlConsultarPersonal.add(pnlInformacionConsultar);
+
+        pnlBotonConsultar.setLayout(new java.awt.GridLayout(2, 0));
+
+        btnConsultar.setText("Consultar");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
+        pnlBotonConsultar.add(btnConsultar);
+        pnlBotonConsultar.add(lblMensajeErrorConsultar);
+
+        pnlConsultarPersonal.add(pnlBotonConsultar);
 
         tbpPrincipal.addTab("Consultar", pnlConsultarPersonal);
 
@@ -93,11 +292,11 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         pnlListarPersonal.setLayout(pnlListarPersonalLayout);
         pnlListarPersonalLayout.setHorizontalGroup(
             pnlListarPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
+            .addGap(0, 430, Short.MAX_VALUE)
         );
         pnlListarPersonalLayout.setVerticalGroup(
             pnlListarPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 272, Short.MAX_VALUE)
+            .addGap(0, 552, Short.MAX_VALUE)
         );
 
         tbpPrincipal.addTab("Listar", pnlListarPersonal);
@@ -107,47 +306,160 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIMenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIMenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIMenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIMenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        String tipoId = "", nombreCompleto, ocupacion = "", usuario, clave;
+        int id;
+        boolean registrado = false;
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIMenuAdmin().setVisible(true);
-            }
-        });
+        if (rbtnCCReg.isSelected()) {
+            tipoId = "cc";
+        } else if (rbtnPasaporteReg.isSelected()) {
+            tipoId = "pasaporte";
+        } else if (rbtnTIReg.isSelected()) {
+            tipoId = "ti";
+        }
+
+        nombreCompleto = txtNombreReg.getText();
+        id = Parse.StringToInt(txtIdReg.getText());
+
+        if (rbtnSecretariaReg.isSelected()) {
+            ocupacion = "secretaria";
+        } else if (rbtnPaf.isSelected()) {
+            ocupacion = "paf";
+        }
+
+        usuario = txtUsuarioReg.getText();
+        clave = String.valueOf(pssClaveReg.getPassword());
+        PersonalDTO personal = new PersonalDTO(tipoId, id, nombreCompleto, ocupacion, usuario, clave);
+        try {
+            registrado = this.cliente.getGestor().registrarPersonal(personal);
+        } catch (RemoteException ex) {
+            this.lblMensajeErrorReg.setText("Error: No se pudo registrar el personal\n" + ex.getMessage());
+        }
+
+        if (registrado) {
+            this.lblMensajeErrorReg.setText("Información: Personal registrado");
+        } else {
+            this.lblMensajeErrorReg.setText("Error: Personal NO registrado");
+        }
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        PersonalDTO personal = null;
+        int id = -1;
+        id = Parse.StringToInt(txtConsultaConsultar.getText());
+        try {
+            personal = cliente.getGestor().consultarPersonal(id);
+        } catch (RemoteException ex) {
+            lblMensajeErrorConsultar.setText("Error al consultar personal.");
+        }
+
+        if (personal != null) {
+            lblMensajeErrorConsultar.setText("Personal encontrado.");
+            lblNombreConsultaRes.setText(personal.getNombreCompleto());
+            lblOcupacionConsultaRes.setText(personal.getOcupacion());
+            lblUsuarioConsultaRes.setText(personal.getUsuario());
+        } else {
+            lblMensajeErrorConsultar.setText("Personal no encontrado.");
+            lblNombreConsultaRes.setText("-");
+            lblOcupacionConsultaRes.setText("-");
+            lblUsuarioConsultaRes.setText("-");
+        }
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(GUIMenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(GUIMenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(GUIMenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(GUIMenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new GUIMenuAdmin().setVisible(true);
+//            }
+//        });
+//    }
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
+    // Variables
+    private Cliente cliente;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnRegistrar;
+    private javax.swing.ButtonGroup gbtnOcupacionReg;
+    private javax.swing.ButtonGroup gbtnTipoIdReg;
+    private javax.swing.JLabel lblClaveReg;
+    private javax.swing.JLabel lblConsultaConsultar;
+    private javax.swing.JLabel lblIdReg;
+    private javax.swing.JLabel lblMensajeErrorConsultar;
+    private javax.swing.JLabel lblMensajeErrorReg;
+    private javax.swing.JLabel lblNombreConsultaRes;
+    private javax.swing.JLabel lblNombreConsultar;
+    private javax.swing.JLabel lblNombreReg;
+    private javax.swing.JLabel lblOcupacionConsultaRes;
+    private javax.swing.JLabel lblOcupacionConsultar;
+    private javax.swing.JLabel lblOcupacionReg;
+    private javax.swing.JLabel lblTipoId;
+    private javax.swing.JLabel lblTituloConsultar;
+    private javax.swing.JLabel lblTituloRegistrar;
+    private javax.swing.JLabel lblUsuarioConsulta;
+    private javax.swing.JLabel lblUsuarioConsultaRes;
+    private javax.swing.JLabel lblUsuarioReg;
+    private javax.swing.JPanel pnlBotonConsultar;
+    private javax.swing.JPanel pnlBotonRegistrar;
+    private javax.swing.JPanel pnlClave;
+    private javax.swing.JPanel pnlConsultaConsultar;
     private javax.swing.JPanel pnlConsultarPersonal;
     private javax.swing.JPanel pnlEliminarPersonal;
+    private javax.swing.JPanel pnlIdReg;
+    private javax.swing.JPanel pnlInformacionConsultar;
     private javax.swing.JPanel pnlListarPersonal;
     private javax.swing.JPanel pnlModificarPersonal;
+    private javax.swing.JPanel pnlNombreReg;
+    private javax.swing.JPanel pnlOcupacionReg;
+    private javax.swing.JPanel pnlOcupacionRegDere;
+    private javax.swing.JPanel pnlOcupacionRegIzq;
     private javax.swing.JPanel pnlRegistrarPersonal;
+    private javax.swing.JPanel pnlTipoIdReg;
+    private javax.swing.JPanel pnlTipoIdRegDere;
+    private javax.swing.JPanel pnlTipoIdRegIzq;
+    private javax.swing.JPanel pnlTituloConsultar;
+    private javax.swing.JPanel pnlTituloReg;
+    private javax.swing.JPanel pnlUsuarioReg;
+    private javax.swing.JPasswordField pssClaveReg;
+    private javax.swing.JRadioButton rbtnCCReg;
+    private javax.swing.JRadioButton rbtnPaf;
+    private javax.swing.JRadioButton rbtnPasaporteReg;
+    private javax.swing.JRadioButton rbtnSecretariaReg;
+    private javax.swing.JRadioButton rbtnTIReg;
     private javax.swing.JTabbedPane tbpPrincipal;
+    private javax.swing.JTextField txtConsultaConsultar;
+    private javax.swing.JTextField txtIdReg;
+    private javax.swing.JTextField txtNombreReg;
+    private javax.swing.JTextField txtUsuarioReg;
     // End of variables declaration//GEN-END:variables
 }

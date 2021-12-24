@@ -22,7 +22,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
         personal = new ArrayList<>();
         pacientes = new ArrayList<>();
         usuarios = new ArrayList<>();
-        PersonalDTO admin = new PersonalDTO("admin", "12345678", 12345678, "admin", "admin"); 
+        PersonalDTO admin = new PersonalDTO("cc", 12345678, "admin", "admin", "admin", "12345678");
         personal.add(admin);
         usuarios.add(admin);
     }
@@ -89,11 +89,11 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
     @Override
     public PersonalDTO consultarPersonal(int id) throws RemoteException {
         int indice = this.getIndicePersonal(id);
-        PersonalDTO personal = null;
+        PersonalDTO personalDTO = null;
         if (indice > 0) {
-            personal = this.personal.get(indice);
+            personalDTO = this.personal.get(indice);
         }
-        return personal;
+        return personalDTO;
     }
 
     @Override
