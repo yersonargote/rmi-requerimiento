@@ -130,6 +130,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
         int indice = this.getIndicePaciente(paciente.getId());
         if (indice == -1) {
             this.pacientes.add(paciente);
+            this.usuarios.add(paciente);
             registrado = true;
         }
         return registrado;
@@ -139,7 +140,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
     public boolean modificarPaciente(PacienteDTO paciente) throws RemoteException {
         boolean modificado = false;
         int indice = this.getIndicePaciente(paciente.getId());
-        if (indice > 0) {
+        if (indice >= 0) {
             this.pacientes.set(indice, paciente);
             modificado = true;
         }
@@ -150,7 +151,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
     public boolean eliminarPaciente(int id) throws RemoteException {
         boolean eliminado = false;
         int indice = this.getIndicePaciente(id);
-        if (indice > 0) {
+        if (indice >= 0) {
             this.pacientes.remove(indice);
             eliminado = true;
         }
@@ -161,7 +162,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
     public PacienteDTO consultarPaciente(int id) throws RemoteException {
         PacienteDTO paciente = null;
         int indice = this.getIndicePaciente(id);
-        if (indice > 0) {
+        if (indice >= 0) {
             paciente = this.pacientes.get(indice);
         }
         return paciente;

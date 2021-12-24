@@ -85,7 +85,7 @@
                 <Property name="text" type="java.lang.String" value="Clave"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtClaveLogin">
+            <Component class="javax.swing.JPasswordField" name="pssClaveLogin">
             </Component>
           </SubComponents>
         </Container>

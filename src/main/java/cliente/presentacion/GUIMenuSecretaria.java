@@ -2,7 +2,8 @@ package cliente.presentacion;
 
 import cliente.Cliente;
 import cliente.utilidades.Parse;
-import gestion_usuarios.dto.PersonalDTO;
+import gestion_usuarios.dto.PacienteDTO;
+import gestion_usuarios.utilidades.Utilidades;
 import java.rmi.RemoteException;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -11,12 +12,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author yerso
  */
-public class GUIMenuAdmin extends javax.swing.JFrame {
+public class GUIMenuSecretaria extends javax.swing.JFrame {
 
     /**
      * Creates new form GUIMenuAdmin
      */
-    public GUIMenuAdmin() {
+    public GUIMenuSecretaria() {
         initComponents();
     }
 
@@ -29,31 +30,31 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        gbtnTipoIdReg = new javax.swing.ButtonGroup();
-        gbtnOcupacionReg = new javax.swing.ButtonGroup();
+        gbtnTipoUsuarioReg = new javax.swing.ButtonGroup();
         tbpPrincipal = new javax.swing.JTabbedPane();
         pnlRegistrarPersonal = new javax.swing.JPanel();
         pnlTituloReg = new javax.swing.JPanel();
         lblTituloRegistrar = new javax.swing.JLabel();
-        pnlTipoIdReg = new javax.swing.JPanel();
-        pnlTipoIdRegIzq = new javax.swing.JPanel();
-        lblTipoId = new javax.swing.JLabel();
-        pnlTipoIdRegDere = new javax.swing.JPanel();
-        rbtnCCReg = new javax.swing.JRadioButton();
-        rbtnPasaporteReg = new javax.swing.JRadioButton();
-        rbtnTIReg = new javax.swing.JRadioButton();
         pnlIdReg = new javax.swing.JPanel();
         lblIdReg = new javax.swing.JLabel();
         txtIdReg = new javax.swing.JTextField();
         pnlNombreReg = new javax.swing.JPanel();
         lblNombreReg = new javax.swing.JLabel();
         txtNombreReg = new javax.swing.JTextField();
+        pnlFacultadReg = new javax.swing.JPanel();
+        pnlTipoIdRegIzq = new javax.swing.JPanel();
+        lblTipoId = new javax.swing.JLabel();
+        pnlTipoIdRegDere = new javax.swing.JPanel();
+        txtFacultadReg = new javax.swing.JTextField();
         pnlOcupacionReg = new javax.swing.JPanel();
         pnlOcupacionRegIzq = new javax.swing.JPanel();
-        lblOcupacionReg = new javax.swing.JLabel();
+        lblTipoUsuarioReg = new javax.swing.JLabel();
         pnlOcupacionRegDere = new javax.swing.JPanel();
-        rbtnSecretariaReg = new javax.swing.JRadioButton();
-        rbtnPaf = new javax.swing.JRadioButton();
+        rbtnDocenteReg = new javax.swing.JRadioButton();
+        rbtnAdministrativoReg = new javax.swing.JRadioButton();
+        pnlPatologiaReg = new javax.swing.JPanel();
+        lblPatologiaReg = new javax.swing.JLabel();
+        txtPatologiaReg = new javax.swing.JTextField();
         pnlUsuarioReg = new javax.swing.JPanel();
         lblUsuarioReg = new javax.swing.JLabel();
         txtUsuarioReg = new javax.swing.JTextField();
@@ -75,9 +76,17 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         lblNombreConsultar = new javax.swing.JLabel();
         lblNombreConsultaRes = new javax.swing.JLabel();
         lblOcupacionConsultar = new javax.swing.JLabel();
-        lblOcupacionConsultaRes = new javax.swing.JLabel();
+        lblTipoUsuarioConsultaRes = new javax.swing.JLabel();
         lblUsuarioConsulta = new javax.swing.JLabel();
         lblUsuarioConsultaRes = new javax.swing.JLabel();
+        lblFacultadConsultar = new javax.swing.JLabel();
+        lblFacultadConsultarRes = new javax.swing.JLabel();
+        pnlSurConsultar = new javax.swing.JPanel();
+        pnlMasInfoConsulta = new javax.swing.JPanel();
+        lblPatologiaConsultar = new javax.swing.JLabel();
+        lblPatologiaConsultarRes = new javax.swing.JLabel();
+        lblFechaIngresoConsultar = new javax.swing.JLabel();
+        lblFechaIngresoConsultarRes = new javax.swing.JLabel();
         pnlBotonConsultar = new javax.swing.JPanel();
         btnConsultar = new javax.swing.JButton();
         lblMensajeErrorConsultar = new javax.swing.JLabel();
@@ -86,7 +95,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         lblTituloListar = new javax.swing.JLabel();
         btnListar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblListaPersonal = new javax.swing.JTable();
+        tblListaPacientes = new javax.swing.JTable();
         lblMensajeErrorListar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -94,49 +103,20 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
 
         tbpPrincipal.setPreferredSize(new java.awt.Dimension(500, 700));
 
-        pnlRegistrarPersonal.setLayout(new java.awt.GridLayout(8, 0));
+        pnlRegistrarPersonal.setLayout(new java.awt.GridLayout(9, 0));
 
-        pnlTituloReg.setLayout(new java.awt.GridLayout());
+        pnlTituloReg.setLayout(new java.awt.GridLayout(1, 0));
 
         lblTituloRegistrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTituloRegistrar.setText("Registrar Personal");
+        lblTituloRegistrar.setText("Registrar Paciente");
         pnlTituloReg.add(lblTituloRegistrar);
 
         pnlRegistrarPersonal.add(pnlTituloReg);
 
-        pnlTipoIdReg.setLayout(new java.awt.GridLayout(1, 2));
-
-        pnlTipoIdRegIzq.setLayout(new java.awt.GridLayout(1, 0));
-
-        lblTipoId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTipoId.setText("Tipo de Identificación");
-        pnlTipoIdRegIzq.add(lblTipoId);
-
-        pnlTipoIdReg.add(pnlTipoIdRegIzq);
-
-        pnlTipoIdRegDere.setLayout(new java.awt.GridLayout(3, 0));
-
-        gbtnTipoIdReg.add(rbtnCCReg);
-        rbtnCCReg.setSelected(true);
-        rbtnCCReg.setText("Cedula de Ciudadania");
-        pnlTipoIdRegDere.add(rbtnCCReg);
-
-        gbtnTipoIdReg.add(rbtnPasaporteReg);
-        rbtnPasaporteReg.setText("Pasaporte");
-        pnlTipoIdRegDere.add(rbtnPasaporteReg);
-
-        gbtnTipoIdReg.add(rbtnTIReg);
-        rbtnTIReg.setText("Tarjeta de Identidad");
-        pnlTipoIdRegDere.add(rbtnTIReg);
-
-        pnlTipoIdReg.add(pnlTipoIdRegDere);
-
-        pnlRegistrarPersonal.add(pnlTipoIdReg);
-
         pnlIdReg.setLayout(new java.awt.GridLayout(1, 0));
 
         lblIdReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblIdReg.setText("ID");
+        lblIdReg.setText("Identificaión");
         pnlIdReg.add(lblIdReg);
         pnlIdReg.add(txtIdReg);
 
@@ -151,30 +131,56 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
 
         pnlRegistrarPersonal.add(pnlNombreReg);
 
+        pnlFacultadReg.setLayout(new java.awt.GridLayout(1, 2));
+
+        pnlTipoIdRegIzq.setLayout(new java.awt.GridLayout(1, 0));
+
+        lblTipoId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTipoId.setText("Facultad");
+        pnlTipoIdRegIzq.add(lblTipoId);
+
+        pnlFacultadReg.add(pnlTipoIdRegIzq);
+
+        pnlTipoIdRegDere.setLayout(new java.awt.GridLayout(1, 0));
+        pnlTipoIdRegDere.add(txtFacultadReg);
+
+        pnlFacultadReg.add(pnlTipoIdRegDere);
+
+        pnlRegistrarPersonal.add(pnlFacultadReg);
+
         pnlOcupacionReg.setLayout(new java.awt.GridLayout(1, 0));
 
         pnlOcupacionRegIzq.setLayout(new java.awt.GridLayout(1, 0));
 
-        lblOcupacionReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblOcupacionReg.setText("Ocupación");
-        pnlOcupacionRegIzq.add(lblOcupacionReg);
+        lblTipoUsuarioReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTipoUsuarioReg.setText("Tipo de Usuario");
+        pnlOcupacionRegIzq.add(lblTipoUsuarioReg);
 
         pnlOcupacionReg.add(pnlOcupacionRegIzq);
 
         pnlOcupacionRegDere.setLayout(new java.awt.GridLayout(2, 0));
 
-        gbtnOcupacionReg.add(rbtnSecretariaReg);
-        rbtnSecretariaReg.setSelected(true);
-        rbtnSecretariaReg.setText("Secretaria");
-        pnlOcupacionRegDere.add(rbtnSecretariaReg);
+        gbtnTipoUsuarioReg.add(rbtnDocenteReg);
+        rbtnDocenteReg.setSelected(true);
+        rbtnDocenteReg.setText("Docente");
+        pnlOcupacionRegDere.add(rbtnDocenteReg);
 
-        gbtnOcupacionReg.add(rbtnPaf);
-        rbtnPaf.setText("Profesional de Acondicionamiento Fisico");
-        pnlOcupacionRegDere.add(rbtnPaf);
+        gbtnTipoUsuarioReg.add(rbtnAdministrativoReg);
+        rbtnAdministrativoReg.setText("Administrativo");
+        pnlOcupacionRegDere.add(rbtnAdministrativoReg);
 
         pnlOcupacionReg.add(pnlOcupacionRegDere);
 
         pnlRegistrarPersonal.add(pnlOcupacionReg);
+
+        pnlPatologiaReg.setLayout(new java.awt.GridLayout(1, 0));
+
+        lblPatologiaReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPatologiaReg.setText("Patologia del Usuario");
+        pnlPatologiaReg.add(lblPatologiaReg);
+        pnlPatologiaReg.add(txtPatologiaReg);
+
+        pnlRegistrarPersonal.add(pnlPatologiaReg);
 
         pnlUsuarioReg.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -213,11 +219,11 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         pnlModificarPersonal.setLayout(pnlModificarPersonalLayout);
         pnlModificarPersonalLayout.setHorizontalGroup(
             pnlModificarPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+            .addGap(0, 696, Short.MAX_VALUE)
         );
         pnlModificarPersonalLayout.setVerticalGroup(
             pnlModificarPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 552, Short.MAX_VALUE)
+            .addGap(0, 580, Short.MAX_VALUE)
         );
 
         tbpPrincipal.addTab("Modificar", pnlModificarPersonal);
@@ -226,11 +232,11 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         pnlEliminarPersonal.setLayout(pnlEliminarPersonalLayout);
         pnlEliminarPersonalLayout.setHorizontalGroup(
             pnlEliminarPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+            .addGap(0, 696, Short.MAX_VALUE)
         );
         pnlEliminarPersonalLayout.setVerticalGroup(
             pnlEliminarPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 552, Short.MAX_VALUE)
+            .addGap(0, 580, Short.MAX_VALUE)
         );
 
         tbpPrincipal.addTab("Eliminar", pnlEliminarPersonal);
@@ -243,18 +249,20 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         lblTituloConsultar.setText("Consultar Personal");
         pnlTituloConsultar.add(lblTituloConsultar);
 
-        pnlConsultaConsultar.setLayout(new java.awt.GridLayout(1, 2));
+        pnlConsultaConsultar.setLayout(new java.awt.GridLayout(2, 0));
 
         lblConsultaConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblConsultaConsultar.setText("Ingrese ID del personal");
+        lblConsultaConsultar.setText("Ingrese ID del paciente");
         pnlConsultaConsultar.add(lblConsultaConsultar);
+
+        txtConsultaConsultar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         pnlConsultaConsultar.add(txtConsultaConsultar);
 
         pnlTituloConsultar.add(pnlConsultaConsultar);
 
         pnlConsultarPersonal.add(pnlTituloConsultar);
 
-        pnlInformacionConsultar.setLayout(new java.awt.GridLayout(3, 2));
+        pnlInformacionConsultar.setLayout(new java.awt.GridLayout(4, 2));
 
         lblNombreConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombreConsultar.setText("Nombre Completo");
@@ -264,11 +272,11 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         pnlInformacionConsultar.add(lblNombreConsultaRes);
 
         lblOcupacionConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblOcupacionConsultar.setText("Ocupación");
+        lblOcupacionConsultar.setText("Tipo de Usuario");
         pnlInformacionConsultar.add(lblOcupacionConsultar);
 
-        lblOcupacionConsultaRes.setText("-");
-        pnlInformacionConsultar.add(lblOcupacionConsultaRes);
+        lblTipoUsuarioConsultaRes.setText("-");
+        pnlInformacionConsultar.add(lblTipoUsuarioConsultaRes);
 
         lblUsuarioConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUsuarioConsulta.setText("Usuario");
@@ -277,7 +285,34 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         lblUsuarioConsultaRes.setText("-");
         pnlInformacionConsultar.add(lblUsuarioConsultaRes);
 
+        lblFacultadConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblFacultadConsultar.setText("Facultad");
+        pnlInformacionConsultar.add(lblFacultadConsultar);
+
+        lblFacultadConsultarRes.setText("-");
+        pnlInformacionConsultar.add(lblFacultadConsultarRes);
+
         pnlConsultarPersonal.add(pnlInformacionConsultar);
+
+        pnlSurConsultar.setLayout(new java.awt.GridLayout(2, 0));
+
+        pnlMasInfoConsulta.setLayout(new java.awt.GridLayout(2, 0));
+
+        lblPatologiaConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPatologiaConsultar.setText("Patologia del Usuario");
+        pnlMasInfoConsulta.add(lblPatologiaConsultar);
+
+        lblPatologiaConsultarRes.setText("-");
+        pnlMasInfoConsulta.add(lblPatologiaConsultarRes);
+
+        lblFechaIngresoConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblFechaIngresoConsultar.setText("Fecha de Ingreso");
+        pnlMasInfoConsulta.add(lblFechaIngresoConsultar);
+
+        lblFechaIngresoConsultarRes.setText("-");
+        pnlMasInfoConsulta.add(lblFechaIngresoConsultarRes);
+
+        pnlSurConsultar.add(pnlMasInfoConsulta);
 
         pnlBotonConsultar.setLayout(new java.awt.GridLayout(2, 0));
 
@@ -290,7 +325,9 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         pnlBotonConsultar.add(btnConsultar);
         pnlBotonConsultar.add(lblMensajeErrorConsultar);
 
-        pnlConsultarPersonal.add(pnlBotonConsultar);
+        pnlSurConsultar.add(pnlBotonConsultar);
+
+        pnlConsultarPersonal.add(pnlSurConsultar);
 
         tbpPrincipal.addTab("Consultar", pnlConsultarPersonal);
 
@@ -299,7 +336,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         pnlNorteListar.setLayout(new java.awt.GridLayout(1, 0));
 
         lblTituloListar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTituloListar.setText("Listar Personal");
+        lblTituloListar.setText("Listar Pacientes");
         pnlNorteListar.add(lblTituloListar);
 
         btnListar.setText("Listar");
@@ -312,18 +349,18 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
 
         pnlListarPersonal.add(pnlNorteListar, java.awt.BorderLayout.NORTH);
 
-        tblListaPersonal.setModel(new javax.swing.table.DefaultTableModel(
+        tblListaPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id", "Nombre Completo", "Ocupación", "Usuario"
+                "Id", "Nombre Completo", "Tipo de Usuario", "Facultad", "Usuario", "Patologia", "FechaIngreso"
             }
         ));
-        jScrollPane1.setViewportView(tblListaPersonal);
+        jScrollPane1.setViewportView(tblListaPacientes);
 
         pnlListarPersonal.add(jScrollPane1, java.awt.BorderLayout.CENTER);
-        pnlListarPersonal.add(lblMensajeErrorListar, java.awt.BorderLayout.PAGE_END);
+        pnlListarPersonal.add(lblMensajeErrorListar, java.awt.BorderLayout.SOUTH);
 
         tbpPrincipal.addTab("Listar", pnlListarPersonal);
 
@@ -334,82 +371,86 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        String tipoId = "", nombreCompleto, ocupacion = "", usuario, clave;
+        String tipoUsuario = "", nombreCompleto, facultad, usuario, clave, fechaIngreso, patologia;
         int id;
         boolean registrado = false;
-
-        if (rbtnCCReg.isSelected()) {
-            tipoId = "cc";
-        } else if (rbtnPasaporteReg.isSelected()) {
-            tipoId = "pasaporte";
-        } else if (rbtnTIReg.isSelected()) {
-            tipoId = "ti";
-        }
 
         nombreCompleto = txtNombreReg.getText();
         id = Parse.StringToInt(txtIdReg.getText());
 
-        if (rbtnSecretariaReg.isSelected()) {
-            ocupacion = "secretaria";
-        } else if (rbtnPaf.isSelected()) {
-            ocupacion = "paf";
+        if (rbtnDocenteReg.isSelected()) {
+            tipoUsuario = "docente";
+        } else if (rbtnAdministrativoReg.isSelected()) {
+            tipoUsuario = "administrativo";
         }
 
         usuario = txtUsuarioReg.getText();
         clave = String.valueOf(pssClaveReg.getPassword());
-        PersonalDTO personal = new PersonalDTO(tipoId, id, nombreCompleto, ocupacion, usuario, clave);
+        fechaIngreso = Utilidades.fechaActual();
+        patologia = txtPatologiaReg.getText();
+        facultad = txtFacultadReg.getText();
+        PacienteDTO paciente = new PacienteDTO(usuario, clave, id, nombreCompleto, facultad, tipoUsuario, fechaIngreso, patologia);
         try {
-            registrado = this.cliente.getGestor().registrarPersonal(personal);
+            registrado = this.cliente.getGestor().registrarPaciente(paciente);
         } catch (RemoteException ex) {
-            this.lblMensajeErrorReg.setText("Error: No se pudo registrar el personal\n" + ex.getMessage());
+            this.lblMensajeErrorReg.setText("Error: No se pudo registrar el paciente\n" + ex.getMessage());
         }
 
         if (registrado) {
-            this.lblMensajeErrorReg.setText("Información: Personal registrado");
+            this.lblMensajeErrorReg.setText("Información: Paciente registrado");
         } else {
-            this.lblMensajeErrorReg.setText("Error: Personal NO registrado");
+            this.lblMensajeErrorReg.setText("Error: Paciente NO registrado");
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        PersonalDTO personal = null;
+        PacienteDTO pacienteDTO = null;
         int id = Parse.StringToInt(txtConsultaConsultar.getText());
         try {
-            personal = cliente.getGestor().consultarPersonal(id);
+            pacienteDTO = cliente.getGestor().consultarPaciente(id);
         } catch (RemoteException ex) {
             lblMensajeErrorConsultar.setText("Error al consultar personal.");
         }
 
-        if (personal != null) {
+        if (pacienteDTO != null) {
             lblMensajeErrorConsultar.setText("Personal encontrado.");
-            lblNombreConsultaRes.setText(personal.getNombreCompleto());
-            lblOcupacionConsultaRes.setText(personal.getOcupacion());
-            lblUsuarioConsultaRes.setText(personal.getUsuario());
+            lblNombreConsultaRes.setText(pacienteDTO.getNombre());
+            lblTipoUsuarioConsultaRes.setText(pacienteDTO.getTipoUsuario());
+            lblUsuarioConsultaRes.setText(pacienteDTO.getUsuario());
+            lblPatologiaConsultarRes.setText(pacienteDTO.getPatologia());
+            lblFacultadConsultarRes.setText(pacienteDTO.getFacultad());
+            lblFechaIngresoConsultarRes.setText(pacienteDTO.getFechaIngreso());
         } else {
             lblMensajeErrorConsultar.setText("Personal no encontrado.");
             lblNombreConsultaRes.setText("-");
-            lblOcupacionConsultaRes.setText("-");
+            lblTipoUsuarioConsultaRes.setText("-");
             lblUsuarioConsultaRes.setText("-");
+            lblFacultadConsultarRes.setText("-");
+            lblPatologiaConsultarRes.setText("-");
+            lblFechaIngresoConsultarRes.setText("-");
         }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        List<PersonalDTO> personal = null;
-        DefaultTableModel modelo = (DefaultTableModel) tblListaPersonal.getModel();
-        Object fila[] = new Object[4];
+        List<PacienteDTO> pacientes = null;
+        DefaultTableModel modelo = (DefaultTableModel) tblListaPacientes.getModel();
+        Object fila[] = new Object[7];
 
         try {
-            personal = this.cliente.getGestor().listarPersonal();
+            pacientes = this.cliente.getGestor().listarPaciente();
         } catch (RemoteException ex) {
             lblMensajeErrorListar.setText("Error al listar personal.");
         }
 
-        if (personal != null) {
-            for (PersonalDTO per : personal) {
-                fila[0] = per.getId();
-                fila[1] = per.getNombreCompleto();
-                fila[2] = per.getOcupacion();
-                fila[3] = per.getUsuario();
+        if (pacientes != null) {
+            for (PacienteDTO paciente : pacientes) {
+                fila[0] = paciente.getId();
+                fila[1] = paciente.getNombre();
+                fila[2] = paciente.getTipoUsuario();
+                fila[3] = paciente.getFacultad();
+                fila[4] = paciente.getUsuario();
+                fila[5] = paciente.getPatologia();
+                fila[6] = paciente.getFechaIngreso();
                 modelo.addRow(fila);
             }
         }
@@ -459,11 +500,14 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnListar;
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.ButtonGroup gbtnOcupacionReg;
-    private javax.swing.ButtonGroup gbtnTipoIdReg;
+    private javax.swing.ButtonGroup gbtnTipoUsuarioReg;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblClaveReg;
     private javax.swing.JLabel lblConsultaConsultar;
+    private javax.swing.JLabel lblFacultadConsultar;
+    private javax.swing.JLabel lblFacultadConsultarRes;
+    private javax.swing.JLabel lblFechaIngresoConsultar;
+    private javax.swing.JLabel lblFechaIngresoConsultarRes;
     private javax.swing.JLabel lblIdReg;
     private javax.swing.JLabel lblMensajeErrorConsultar;
     private javax.swing.JLabel lblMensajeErrorListar;
@@ -471,10 +515,13 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombreConsultaRes;
     private javax.swing.JLabel lblNombreConsultar;
     private javax.swing.JLabel lblNombreReg;
-    private javax.swing.JLabel lblOcupacionConsultaRes;
     private javax.swing.JLabel lblOcupacionConsultar;
-    private javax.swing.JLabel lblOcupacionReg;
+    private javax.swing.JLabel lblPatologiaConsultar;
+    private javax.swing.JLabel lblPatologiaConsultarRes;
+    private javax.swing.JLabel lblPatologiaReg;
     private javax.swing.JLabel lblTipoId;
+    private javax.swing.JLabel lblTipoUsuarioConsultaRes;
+    private javax.swing.JLabel lblTipoUsuarioReg;
     private javax.swing.JLabel lblTituloConsultar;
     private javax.swing.JLabel lblTituloListar;
     private javax.swing.JLabel lblTituloRegistrar;
@@ -487,33 +534,35 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel pnlConsultaConsultar;
     private javax.swing.JPanel pnlConsultarPersonal;
     private javax.swing.JPanel pnlEliminarPersonal;
+    private javax.swing.JPanel pnlFacultadReg;
     private javax.swing.JPanel pnlIdReg;
     private javax.swing.JPanel pnlInformacionConsultar;
     private javax.swing.JPanel pnlListarPersonal;
+    private javax.swing.JPanel pnlMasInfoConsulta;
     private javax.swing.JPanel pnlModificarPersonal;
     private javax.swing.JPanel pnlNombreReg;
     private javax.swing.JPanel pnlNorteListar;
     private javax.swing.JPanel pnlOcupacionReg;
     private javax.swing.JPanel pnlOcupacionRegDere;
     private javax.swing.JPanel pnlOcupacionRegIzq;
+    private javax.swing.JPanel pnlPatologiaReg;
     private javax.swing.JPanel pnlRegistrarPersonal;
-    private javax.swing.JPanel pnlTipoIdReg;
+    private javax.swing.JPanel pnlSurConsultar;
     private javax.swing.JPanel pnlTipoIdRegDere;
     private javax.swing.JPanel pnlTipoIdRegIzq;
     private javax.swing.JPanel pnlTituloConsultar;
     private javax.swing.JPanel pnlTituloReg;
     private javax.swing.JPanel pnlUsuarioReg;
     private javax.swing.JPasswordField pssClaveReg;
-    private javax.swing.JRadioButton rbtnCCReg;
-    private javax.swing.JRadioButton rbtnPaf;
-    private javax.swing.JRadioButton rbtnPasaporteReg;
-    private javax.swing.JRadioButton rbtnSecretariaReg;
-    private javax.swing.JRadioButton rbtnTIReg;
-    private javax.swing.JTable tblListaPersonal;
+    private javax.swing.JRadioButton rbtnAdministrativoReg;
+    private javax.swing.JRadioButton rbtnDocenteReg;
+    private javax.swing.JTable tblListaPacientes;
     private javax.swing.JTabbedPane tbpPrincipal;
     private javax.swing.JTextField txtConsultaConsultar;
+    private javax.swing.JTextField txtFacultadReg;
     private javax.swing.JTextField txtIdReg;
     private javax.swing.JTextField txtNombreReg;
+    private javax.swing.JTextField txtPatologiaReg;
     private javax.swing.JTextField txtUsuarioReg;
     // End of variables declaration//GEN-END:variables
 }

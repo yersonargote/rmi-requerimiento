@@ -39,7 +39,7 @@ public class GUIAbrirSesion extends javax.swing.JFrame {
         txtUsuarioLogin = new javax.swing.JTextField();
         pnl2 = new javax.swing.JPanel();
         lblClaveLogin = new javax.swing.JLabel();
-        txtClaveLogin = new javax.swing.JTextField();
+        pssClaveLogin = new javax.swing.JPasswordField();
         pnl3 = new javax.swing.JPanel();
         btnLogin = new javax.swing.JButton();
         pnl4 = new javax.swing.JPanel();
@@ -69,7 +69,7 @@ public class GUIAbrirSesion extends javax.swing.JFrame {
 
         lblClaveLogin.setText("Clave");
         pnl2.add(lblClaveLogin);
-        pnl2.add(txtClaveLogin);
+        pnl2.add(pssClaveLogin);
 
         pnlPrincipal.add(pnl2);
 
@@ -109,7 +109,7 @@ public class GUIAbrirSesion extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String usuario = this.txtUsuarioLogin.getText();
-        String clave = this.txtClaveLogin.getText();
+        String clave = String.valueOf(this.pssClaveLogin.getPassword());
         int tipoUsuario = -1;
         CredencialDTO credencial = new CredencialDTO(usuario, clave);
         try{
@@ -123,7 +123,10 @@ public class GUIAbrirSesion extends javax.swing.JFrame {
                             menuAdmin.setVisible(true);
                             break;
                         case 1:
-                            this.lblMensajeErrorLogin.setText("Secretaria NO Implementado");
+                            GUIMenuSecretaria menuSecretaria = new GUIMenuSecretaria();
+                            menuSecretaria.setCliente(cliente);
+                            this.setVisible(false);
+                            menuSecretaria.setVisible(true);
                             break;
                         case 2:
                             this.lblMensajeErrorLogin.setText("Paf NO Implementado");
@@ -191,7 +194,7 @@ public class GUIAbrirSesion extends javax.swing.JFrame {
     private javax.swing.JPanel pnl3;
     private javax.swing.JPanel pnl4;
     private javax.swing.JPanel pnlPrincipal;
-    private javax.swing.JTextField txtClaveLogin;
+    private javax.swing.JPasswordField pssClaveLogin;
     private javax.swing.JTextField txtUsuarioLogin;
     // End of variables declaration//GEN-END:variables
 }
