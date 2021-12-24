@@ -138,8 +138,6 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         lblIdReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblIdReg.setText("ID");
         pnlIdReg.add(lblIdReg);
-
-        txtIdReg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         pnlIdReg.add(txtIdReg);
 
         pnlRegistrarPersonal.add(pnlIdReg);
@@ -298,7 +296,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
 
         pnlListarPersonal.setLayout(new java.awt.BorderLayout());
 
-        pnlNorteListar.setLayout(new java.awt.GridLayout());
+        pnlNorteListar.setLayout(new java.awt.GridLayout(1, 0));
 
         lblTituloListar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTituloListar.setText("Listar Personal");
@@ -332,6 +330,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         getContentPane().add(tbpPrincipal);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed

@@ -46,7 +46,6 @@ public class GUIAbrirSesion extends javax.swing.JFrame {
         lblMensajeErrorLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(400, 300));
 
         pnlPrincipal.setLayout(new java.awt.GridLayout(5, 2));
 
@@ -105,6 +104,7 @@ public class GUIAbrirSesion extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
