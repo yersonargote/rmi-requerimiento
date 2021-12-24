@@ -16,7 +16,6 @@ cliente\presentacion\MenuAdmin.class
 gestion_usuarios\utilidades\Consola.class
 cliente\utilidades\RegistroC.class
 cliente\presentacion\GUIMenuAdmin$2.class
-cliente\presentacion\GUIPrincipal$2.class
 cliente\utilidades\Consola.class
 gestion_usuarios\utilidades\RegistroS.class
 cliente\presentacion\GUIPrincipal.class
@@ -28,3 +27,4 @@ gestion_usuarios\Servidor.class
 cliente\presentacion\GUIMenuAdmin.class
 cliente\presentacion\MenuPaf.class
 gestion_usuarios\sop_rmi\GestionUsuarios.class
+cliente\presentacion\GUIMenuAdmin$3.class

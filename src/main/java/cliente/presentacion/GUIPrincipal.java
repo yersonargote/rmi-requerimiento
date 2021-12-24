@@ -2,7 +2,6 @@ package cliente.presentacion;
 
 import cliente.Cliente;
 import cliente.utilidades.Parse;
-import java.rmi.RemoteException;
 
 /**
  *
@@ -149,10 +148,8 @@ public class GUIPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIPrincipal().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new GUIPrincipal().setVisible(true);
         });
     }
 

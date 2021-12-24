@@ -4,6 +4,8 @@ import cliente.Cliente;
 import cliente.utilidades.Parse;
 import gestion_usuarios.dto.PersonalDTO;
 import java.rmi.RemoteException;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -80,6 +82,12 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         btnConsultar = new javax.swing.JButton();
         lblMensajeErrorConsultar = new javax.swing.JLabel();
         pnlListarPersonal = new javax.swing.JPanel();
+        pnlNorteListar = new javax.swing.JPanel();
+        lblTituloListar = new javax.swing.JLabel();
+        btnListar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblListaPersonal = new javax.swing.JTable();
+        lblMensajeErrorListar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
@@ -88,7 +96,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
 
         pnlRegistrarPersonal.setLayout(new java.awt.GridLayout(8, 0));
 
-        pnlTituloReg.setLayout(new java.awt.GridLayout());
+        pnlTituloReg.setLayout(new java.awt.GridLayout(1, 0));
 
         lblTituloRegistrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTituloRegistrar.setText("Registrar Personal");
@@ -98,7 +106,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
 
         pnlTipoIdReg.setLayout(new java.awt.GridLayout(1, 2));
 
-        pnlTipoIdRegIzq.setLayout(new java.awt.GridLayout());
+        pnlTipoIdRegIzq.setLayout(new java.awt.GridLayout(1, 0));
 
         lblTipoId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTipoId.setText("Tipo de Identificación");
@@ -125,7 +133,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
 
         pnlRegistrarPersonal.add(pnlTipoIdReg);
 
-        pnlIdReg.setLayout(new java.awt.GridLayout());
+        pnlIdReg.setLayout(new java.awt.GridLayout(1, 0));
 
         lblIdReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblIdReg.setText("ID");
@@ -136,7 +144,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
 
         pnlRegistrarPersonal.add(pnlIdReg);
 
-        pnlNombreReg.setLayout(new java.awt.GridLayout());
+        pnlNombreReg.setLayout(new java.awt.GridLayout(1, 0));
 
         lblNombreReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombreReg.setText("Nombre Completo");
@@ -145,9 +153,9 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
 
         pnlRegistrarPersonal.add(pnlNombreReg);
 
-        pnlOcupacionReg.setLayout(new java.awt.GridLayout());
+        pnlOcupacionReg.setLayout(new java.awt.GridLayout(1, 0));
 
-        pnlOcupacionRegIzq.setLayout(new java.awt.GridLayout());
+        pnlOcupacionRegIzq.setLayout(new java.awt.GridLayout(1, 0));
 
         lblOcupacionReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblOcupacionReg.setText("Ocupación");
@@ -170,7 +178,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
 
         pnlRegistrarPersonal.add(pnlOcupacionReg);
 
-        pnlUsuarioReg.setLayout(new java.awt.GridLayout());
+        pnlUsuarioReg.setLayout(new java.awt.GridLayout(1, 0));
 
         lblUsuarioReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUsuarioReg.setText("Usuario");
@@ -179,7 +187,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
 
         pnlRegistrarPersonal.add(pnlUsuarioReg);
 
-        pnlClave.setLayout(new java.awt.GridLayout());
+        pnlClave.setLayout(new java.awt.GridLayout(1, 0));
 
         lblClaveReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblClaveReg.setText("Clave");
@@ -288,16 +296,36 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
 
         tbpPrincipal.addTab("Consultar", pnlConsultarPersonal);
 
-        javax.swing.GroupLayout pnlListarPersonalLayout = new javax.swing.GroupLayout(pnlListarPersonal);
-        pnlListarPersonal.setLayout(pnlListarPersonalLayout);
-        pnlListarPersonalLayout.setHorizontalGroup(
-            pnlListarPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
-        );
-        pnlListarPersonalLayout.setVerticalGroup(
-            pnlListarPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 552, Short.MAX_VALUE)
-        );
+        pnlListarPersonal.setLayout(new java.awt.BorderLayout());
+
+        pnlNorteListar.setLayout(new java.awt.GridLayout());
+
+        lblTituloListar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTituloListar.setText("Listar Personal");
+        pnlNorteListar.add(lblTituloListar);
+
+        btnListar.setText("Listar");
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
+        pnlNorteListar.add(btnListar);
+
+        pnlListarPersonal.add(pnlNorteListar, java.awt.BorderLayout.NORTH);
+
+        tblListaPersonal.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Nombre Completo", "Ocupación", "Usuario"
+            }
+        ));
+        jScrollPane1.setViewportView(tblListaPersonal);
+
+        pnlListarPersonal.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        pnlListarPersonal.add(lblMensajeErrorListar, java.awt.BorderLayout.PAGE_END);
 
         tbpPrincipal.addTab("Listar", pnlListarPersonal);
 
@@ -367,6 +395,28 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        List<PersonalDTO> personal = null;
+        DefaultTableModel modelo = (DefaultTableModel) tblListaPersonal.getModel();
+        Object fila[] = new Object[4];
+        
+        try {
+            personal = this.cliente.getGestor().listarPersonal();
+        } catch (RemoteException ex) {
+            lblMensajeErrorListar.setText("Error al listar personal.");
+        }
+        
+        if (personal != null) {
+            for (PersonalDTO per : personal) {
+                fila[0] = per.getId();
+                fila[1] = per.getNombreCompleto();
+                fila[2] = per.getOcupacion();
+                fila[3] = per.getUsuario();
+                modelo.addRow(fila);
+            }
+        }
+    }//GEN-LAST:event_btnListarActionPerformed
+
 //    /**
 //     * @param args the command line arguments
 //     */
@@ -409,13 +459,16 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     private Cliente cliente;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnListar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.ButtonGroup gbtnOcupacionReg;
     private javax.swing.ButtonGroup gbtnTipoIdReg;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblClaveReg;
     private javax.swing.JLabel lblConsultaConsultar;
     private javax.swing.JLabel lblIdReg;
     private javax.swing.JLabel lblMensajeErrorConsultar;
+    private javax.swing.JLabel lblMensajeErrorListar;
     private javax.swing.JLabel lblMensajeErrorReg;
     private javax.swing.JLabel lblNombreConsultaRes;
     private javax.swing.JLabel lblNombreConsultar;
@@ -425,6 +478,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel lblOcupacionReg;
     private javax.swing.JLabel lblTipoId;
     private javax.swing.JLabel lblTituloConsultar;
+    private javax.swing.JLabel lblTituloListar;
     private javax.swing.JLabel lblTituloRegistrar;
     private javax.swing.JLabel lblUsuarioConsulta;
     private javax.swing.JLabel lblUsuarioConsultaRes;
@@ -440,6 +494,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel pnlListarPersonal;
     private javax.swing.JPanel pnlModificarPersonal;
     private javax.swing.JPanel pnlNombreReg;
+    private javax.swing.JPanel pnlNorteListar;
     private javax.swing.JPanel pnlOcupacionReg;
     private javax.swing.JPanel pnlOcupacionRegDere;
     private javax.swing.JPanel pnlOcupacionRegIzq;
@@ -456,6 +511,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbtnPasaporteReg;
     private javax.swing.JRadioButton rbtnSecretariaReg;
     private javax.swing.JRadioButton rbtnTIReg;
+    private javax.swing.JTable tblListaPersonal;
     private javax.swing.JTabbedPane tbpPrincipal;
     private javax.swing.JTextField txtConsultaConsultar;
     private javax.swing.JTextField txtIdReg;
