@@ -10,4 +10,13 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>MVCLibrary</groupId>
+            <artifactId>MVCLibrary</artifactId>
+            <scope>system</scope>
+            <version>1.0</version>
+            <systemPath>${project.basedir}/libs/MVCLibrary.jar</systemPath>
+        </dependency>
+    </dependencies>
 </project>

@@ -7,13 +7,17 @@ package cliente.presentacion;
 
 import cliente.Cliente;
 import gestion_usuarios.dto.CredencialDTO;
+import mvcf.AModel;
+import mvcf.AView;
+
+import javax.swing.*;
 import java.rmi.RemoteException;
 
 /**
  *
  * @author yerso
  */
-public class GUIAbrirSesion extends javax.swing.JFrame {
+public class GUIAbrirSesion extends javax.swing.JFrame implements AView {
 
     /**
      * Creates new form GUIAbrirSesion
@@ -76,11 +80,6 @@ public class GUIAbrirSesion extends javax.swing.JFrame {
         pnl3.setLayout(new java.awt.BorderLayout());
 
         btnLogin.setText("Iniciar Sesión");
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
-            }
-        });
         pnl3.add(btnLogin, java.awt.BorderLayout.CENTER);
 
         pnlPrincipal.add(pnl3);
@@ -106,39 +105,6 @@ public class GUIAbrirSesion extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        String usuario = this.txtUsuarioLogin.getText();
-        String clave = String.valueOf(this.pssClaveLogin.getPassword());
-        int tipoUsuario = -1;
-        CredencialDTO credencial = new CredencialDTO(usuario, clave);
-        try{
-            tipoUsuario = this.cliente.getGestor().abrirSesion(credencial);
-        }catch(RemoteException ex){}
-        switch (tipoUsuario) {
-                        case 0:
-                            GUIMenuAdmin menuAdmin = new GUIMenuAdmin();
-                            menuAdmin.setCliente(cliente);
-                            this.setVisible(false);
-                            menuAdmin.setVisible(true);
-                            break;
-                        case 1:
-                            GUIMenuSecretaria menuSecretaria = new GUIMenuSecretaria();
-                            menuSecretaria.setCliente(cliente);
-                            this.setVisible(false);
-                            menuSecretaria.setVisible(true);
-                            break;
-                        case 2:
-                            this.lblMensajeErrorLogin.setText("Paf NO Implementado");
-                            break;
-                        case 3:
-                            this.lblMensajeErrorLogin.setText("Paciente NO Implementado");
-                            break;
-                        default:
-                            this.lblMensajeErrorLogin.setText("Credenciales NO VALIDAS");
-                            break;
-                    }
-    }//GEN-LAST:event_btnLoginActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -174,13 +140,22 @@ public class GUIAbrirSesion extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-    
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+
+    public JButton getBtnLogin() {
+        return btnLogin;
     }
-    
-    // Variables
-    private Cliente cliente;
+
+    public JLabel getLblMensajeErrorLogin() {
+        return lblMensajeErrorLogin;
+    }
+
+    public JPasswordField getPssClaveLogin() {
+        return pssClaveLogin;
+    }
+
+    public JTextField getTxtUsuarioLogin() {
+        return txtUsuarioLogin;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
@@ -197,4 +172,8 @@ public class GUIAbrirSesion extends javax.swing.JFrame {
     private javax.swing.JPasswordField pssClaveLogin;
     private javax.swing.JTextField txtUsuarioLogin;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actualizar(AModel arg0) {
+    }
 }

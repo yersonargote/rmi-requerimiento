@@ -390,11 +390,11 @@ public class GUIMenuSecretaria extends javax.swing.JFrame {
         patologia = txtPatologiaReg.getText();
         facultad = txtFacultadReg.getText();
         PacienteDTO paciente = new PacienteDTO(usuario, clave, id, nombreCompleto, facultad, tipoUsuario, fechaIngreso, patologia);
-        try {
-            registrado = this.cliente.getGestor().registrarPaciente(paciente);
-        } catch (RemoteException ex) {
-            this.lblMensajeErrorReg.setText("Error: No se pudo registrar el paciente\n" + ex.getMessage());
-        }
+//        try {
+//            registrado = this.cliente.getGestor().registrarPaciente(paciente);
+//        } catch (RemoteException ex) {
+//            this.lblMensajeErrorReg.setText("Error: No se pudo registrar el paciente\n" + ex.getMessage());
+//        }
 
         if (registrado) {
             this.lblMensajeErrorReg.setText("Información: Paciente registrado");
@@ -406,11 +406,11 @@ public class GUIMenuSecretaria extends javax.swing.JFrame {
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         PacienteDTO pacienteDTO = null;
         int id = Parse.StringToInt(txtConsultaConsultar.getText());
-        try {
-            pacienteDTO = cliente.getGestor().consultarPaciente(id);
-        } catch (RemoteException ex) {
-            lblMensajeErrorConsultar.setText("Error al consultar personal.");
-        }
+//        try {
+//            pacienteDTO = cliente.getGestor().consultarPaciente(id);
+//        } catch (RemoteException ex) {
+//            lblMensajeErrorConsultar.setText("Error al consultar personal.");
+//        }
 
         if (pacienteDTO != null) {
             lblMensajeErrorConsultar.setText("Personal encontrado.");
@@ -436,11 +436,11 @@ public class GUIMenuSecretaria extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tblListaPacientes.getModel();
         Object fila[] = new Object[7];
 
-        try {
-            pacientes = this.cliente.getGestor().listarPaciente();
-        } catch (RemoteException ex) {
-            lblMensajeErrorListar.setText("Error al listar personal.");
-        }
+//        try {
+//            pacientes = this.cliente.getGestor().listarPaciente();
+//        } catch (RemoteException ex) {
+//            lblMensajeErrorListar.setText("Error al listar personal.");
+//        }
 
         if (pacientes != null) {
             for (PacienteDTO paciente : pacientes) {
@@ -490,12 +490,8 @@ public class GUIMenuSecretaria extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
 
     // Variables
-    private Cliente cliente;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnListar;

@@ -1,13 +1,16 @@
 package cliente.presentacion;
 
-import cliente.Cliente;
-import cliente.utilidades.Parse;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import mvcf.AModel;
+import mvcf.AView;
 
 /**
  *
  * @author yerso
  */
-public class GUIPrincipal extends javax.swing.JFrame {
+public class GUIPrincipal extends javax.swing.JFrame implements AView {
 
     /**
      * Creates new form GUIAbrirSesion
@@ -72,11 +75,6 @@ public class GUIPrincipal extends javax.swing.JFrame {
         pnl3.setLayout(new java.awt.BorderLayout());
 
         btnRegistro.setText("RegistrarC");
-        btnRegistro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistroActionPerformed(evt);
-            }
-        });
         pnl3.add(btnRegistro, java.awt.BorderLayout.CENTER);
 
         pnlPrincipal.add(pnl3);
@@ -103,56 +101,70 @@ public class GUIPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
-        String ip = this.txtIp.getText();
-        int puerto = Parse.StringToInt(this.txtPuerto.getText());
-        Cliente cliente = new Cliente();
-        boolean registrado = cliente.registarCliente(ip, puerto);
-        if (registrado) {
-            GUIAbrirSesion guiAbrirSesion = new GUIAbrirSesion();
-            guiAbrirSesion.setCliente(cliente);
-            this.setVisible(false);
-            guiAbrirSesion.setVisible(true);
-        }
-        else {
-            this.lblMensajeErrorLogin.setText("Problema al registrar el objeto remoto del cliente.");
-        }
-    }//GEN-LAST:event_btnRegistroActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new GUIPrincipal().setVisible(true);
-        });
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        <editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(GUIPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(GUIPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(GUIPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(GUIPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        </editor-fold>
+//        </editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(() -> {
+//            new GUIPrincipal().setVisible(true);
+//        });
+//    }
+    
+    // GETTERS Y SETTERS GUI
+    
+    public JTextField getTxtIp() {
+        return txtIp;
     }
 
+    public void setTxtIp(JTextField txtIp) {
+        this.txtIp = txtIp;
+    }
+
+    public JTextField getTxtPuerto() {
+        return txtPuerto;
+    }
+
+    public void setTxtPuerto(JTextField txtPuerto) {
+        this.txtPuerto = txtPuerto;
+    }
+
+    public JLabel getLblMensajeErrorLogin() {
+        return lblMensajeErrorLogin;
+    }
+
+    public void setLblMensajeErrorLogin(JLabel lblMensajeErrorLogin) {
+        this.lblMensajeErrorLogin = lblMensajeErrorLogin;
+    }
+
+    public JButton getBtnRegistro() {
+        return btnRegistro;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistro;
     private javax.swing.JLabel lblIp;
@@ -168,4 +180,8 @@ public class GUIPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtIp;
     private javax.swing.JTextField txtPuerto;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actualizar(AModel arg0) {
+    }
 }

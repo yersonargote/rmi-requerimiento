@@ -6,6 +6,7 @@ package cliente.utilidades;
  */
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Consola {
@@ -14,12 +15,12 @@ public class Consola {
 
     public static String readLine() {
         String linea = "";
-        boolean valido = false;
+        boolean valido;
         do {
             try {
                 linea = br.readLine();
                 valido = true;
-            } catch (Exception e) {
+            } catch (IOException e) {
                 System.out.println("Error intente nuevamente...");
                 valido = false;
             }
