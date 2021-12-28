@@ -1,17 +1,20 @@
 package cliente.presentacion;
 
-import cliente.Cliente;
-import cliente.utilidades.Parse;
-import gestion_usuarios.dto.PersonalDTO;
-import java.rmi.RemoteException;
-import java.util.List;
-import javax.swing.table.DefaultTableModel;
+import mvcf.AModel;
+import mvcf.AView;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
  * @author yerso
  */
-public class GUIMenuAdmin extends javax.swing.JFrame {
+public class GUIMenuAdmin extends javax.swing.JFrame implements AView {
 
     /**
      * Creates new form GUIMenuAdmin
@@ -96,7 +99,7 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
 
         pnlRegistrarPersonal.setLayout(new java.awt.GridLayout(8, 0));
 
-        pnlTituloReg.setLayout(new java.awt.GridLayout());
+        pnlTituloReg.setLayout(new java.awt.GridLayout(1, 0));
 
         lblTituloRegistrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTituloRegistrar.setText("Registrar Personal");
@@ -197,11 +200,6 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         pnlBotonRegistrar.setLayout(new java.awt.GridLayout(2, 0));
 
         btnRegistrar.setText("Registrar");
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
-            }
-        });
         pnlBotonRegistrar.add(btnRegistrar);
         pnlBotonRegistrar.add(lblMensajeErrorReg);
 
@@ -282,11 +280,6 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         pnlBotonConsultar.setLayout(new java.awt.GridLayout(2, 0));
 
         btnConsultar.setText("Consultar");
-        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarActionPerformed(evt);
-            }
-        });
         pnlBotonConsultar.add(btnConsultar);
         pnlBotonConsultar.add(lblMensajeErrorConsultar);
 
@@ -303,11 +296,6 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         pnlNorteListar.add(lblTituloListar);
 
         btnListar.setText("Listar");
-        btnListar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListarActionPerformed(evt);
-            }
-        });
         pnlNorteListar.add(btnListar);
 
         pnlListarPersonal.add(pnlNorteListar, java.awt.BorderLayout.NORTH);
@@ -332,88 +320,6 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        String tipoId = "", nombreCompleto, ocupacion = "", usuario, clave;
-        int id;
-        boolean registrado = false;
-
-        if (rbtnCCReg.isSelected()) {
-            tipoId = "cc";
-        } else if (rbtnPasaporteReg.isSelected()) {
-            tipoId = "pasaporte";
-        } else if (rbtnTIReg.isSelected()) {
-            tipoId = "ti";
-        }
-
-        nombreCompleto = txtNombreReg.getText();
-        id = Parse.StringToInt(txtIdReg.getText());
-
-        if (rbtnSecretariaReg.isSelected()) {
-            ocupacion = "secretaria";
-        } else if (rbtnPaf.isSelected()) {
-            ocupacion = "paf";
-        }
-
-        usuario = txtUsuarioReg.getText();
-        clave = String.valueOf(pssClaveReg.getPassword());
-        PersonalDTO personal = new PersonalDTO(tipoId, id, nombreCompleto, ocupacion, usuario, clave);
-//        try {
-//            registrado = this.cliente.getGestor().registrarPersonal(personal);
-//        } catch (RemoteException ex) {
-//            this.lblMensajeErrorReg.setText("Error: No se pudo registrar el personal\n" + ex.getMessage());
-//        }
-
-        if (registrado) {
-            this.lblMensajeErrorReg.setText("Información: Personal registrado");
-        } else {
-            this.lblMensajeErrorReg.setText("Error: Personal NO registrado");
-        }
-    }//GEN-LAST:event_btnRegistrarActionPerformed
-
-    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        PersonalDTO personal = null;
-        int id = Parse.StringToInt(txtConsultaConsultar.getText());
-//        try {
-//            personal = cliente.getGestor().consultarPersonal(id);
-//        } catch (RemoteException ex) {
-//            lblMensajeErrorConsultar.setText("Error al consultar personal.");
-//        }
-
-        if (personal != null) {
-            lblMensajeErrorConsultar.setText("Personal encontrado.");
-            lblNombreConsultaRes.setText(personal.getNombreCompleto());
-            lblOcupacionConsultaRes.setText(personal.getOcupacion());
-            lblUsuarioConsultaRes.setText(personal.getUsuario());
-        } else {
-            lblMensajeErrorConsultar.setText("Personal no encontrado.");
-            lblNombreConsultaRes.setText("-");
-            lblOcupacionConsultaRes.setText("-");
-            lblUsuarioConsultaRes.setText("-");
-        }
-    }//GEN-LAST:event_btnConsultarActionPerformed
-
-    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        List<PersonalDTO> personal = null;
-        DefaultTableModel modelo = (DefaultTableModel) tblListaPersonal.getModel();
-        Object fila[] = new Object[4];
-
-//        try {
-//            personal = this.cliente.getGestor().listarPersonal();
-//        } catch (RemoteException ex) {
-//            lblMensajeErrorListar.setText("Error al listar personal.");
-//        }
-
-        if (personal != null) {
-            for (PersonalDTO per : personal) {
-                fila[0] = per.getId();
-                fila[1] = per.getNombreCompleto();
-                fila[2] = per.getOcupacion();
-                fila[3] = per.getUsuario();
-                modelo.addRow(fila);
-            }
-        }
-    }//GEN-LAST:event_btnListarActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -449,6 +355,88 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
 //            }
 //        });
 //    }
+
+
+    public JButton getBtnConsultar() {
+        return btnConsultar;
+    }
+
+    public JButton getBtnListar() {
+        return btnListar;
+    }
+
+    public JButton getBtnRegistrar() {
+        return btnRegistrar;
+    }
+
+    public JPasswordField getPssClaveReg() {
+        return pssClaveReg;
+    }
+
+    public JRadioButton getRbtnCCReg() {
+        return rbtnCCReg;
+    }
+
+    public JRadioButton getRbtnPaf() {
+        return rbtnPaf;
+    }
+
+    public JRadioButton getRbtnPasaporteReg() {
+        return rbtnPasaporteReg;
+    }
+
+    public JRadioButton getRbtnSecretariaReg() {
+        return rbtnSecretariaReg;
+    }
+
+    public JRadioButton getRbtnTIReg() {
+        return rbtnTIReg;
+    }
+
+    public JTextField getTxtConsultaConsultar() {
+        return txtConsultaConsultar;
+    }
+
+    public JTextField getTxtIdReg() {
+        return txtIdReg;
+    }
+
+    public JTextField getTxtNombreReg() {
+        return txtNombreReg;
+    }
+
+    public JTextField getTxtUsuarioReg() {
+        return txtUsuarioReg;
+    }
+
+    public JLabel getLblMensajeErrorReg() {
+        return lblMensajeErrorReg;
+    }
+
+    public JLabel getLblMensajeErrorListar() {
+        return lblMensajeErrorListar;
+    }
+
+    public JLabel getLblMensajeErrorConsultar() {
+        return lblMensajeErrorConsultar;
+    }
+
+    public JLabel getLblNombreConsultaRes() {
+        return lblNombreConsultaRes;
+    }
+
+    public JLabel getLblOcupacionConsultaRes() {
+        return lblOcupacionConsultaRes;
+    }
+
+    public JLabel getLblUsuarioConsultaRes() {
+        return lblUsuarioConsultaRes;
+    }
+
+    public JTable getTblListaPersonal() {
+        return tblListaPersonal;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnListar;
@@ -510,4 +498,8 @@ public class GUIMenuAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombreReg;
     private javax.swing.JTextField txtUsuarioReg;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actualizar(AModel arg0) {
+    }
 }

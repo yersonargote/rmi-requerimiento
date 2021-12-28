@@ -8,13 +8,17 @@ import mvcf.AModel;
  * @author yerso
  */
 public class GestorUsuarios extends AModel {
-    private final IGestionUsuarios gestor;
+    private IGestionUsuarios gestor;
     
     public GestorUsuarios(IGestionUsuarios gestor) {
         this.gestor = gestor;
     }
     
-    public IGestionUsuarios getGestor() {
+    public IGestionUsuarios getGestionUsuarios() {
         return this.gestor;
+    }
+
+    public void setGestionUsuarios(IGestionUsuarios gestionUsuarios) {
+        this.gestor = gestionUsuarios;
     }
 }

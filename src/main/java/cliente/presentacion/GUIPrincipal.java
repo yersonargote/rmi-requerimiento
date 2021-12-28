@@ -141,24 +141,12 @@ public class GUIPrincipal extends javax.swing.JFrame implements AView {
         return txtIp;
     }
 
-    public void setTxtIp(JTextField txtIp) {
-        this.txtIp = txtIp;
-    }
-
     public JTextField getTxtPuerto() {
         return txtPuerto;
     }
 
-    public void setTxtPuerto(JTextField txtPuerto) {
-        this.txtPuerto = txtPuerto;
-    }
-
     public JLabel getLblMensajeErrorLogin() {
         return lblMensajeErrorLogin;
-    }
-
-    public void setLblMensajeErrorLogin(JLabel lblMensajeErrorLogin) {
-        this.lblMensajeErrorLogin = lblMensajeErrorLogin;
     }
 
     public JButton getBtnRegistro() {

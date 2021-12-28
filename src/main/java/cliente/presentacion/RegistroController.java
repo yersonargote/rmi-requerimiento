@@ -4,9 +4,7 @@ import cliente.negocio.GestorUsuarios;
 import cliente.utilidades.Parse;
 import cliente.utilidades.RegistroC;
 import java.awt.event.ActionEvent;
-import java.rmi.RemoteException;
 
-import gestion_usuarios.sop_rmi.GestionUsuarios;
 import gestion_usuarios.sop_rmi.IGestionUsuarios;
 import mvcf.AActionController;
 import mvcf.AModel;
@@ -33,7 +31,8 @@ public class RegistroController extends AActionController {
             case "registro":
                 String ip = this.vista.getTxtIp().getText();
                 int puerto = Parse.StringToInt(this.vista.getTxtPuerto().getText());
-                boolean registrado = (RegistroC.getRemoteObj(ip, puerto, "gestionUsuarios") != null);
+                this.gestor.setGestionUsuarios((IGestionUsuarios) RegistroC.getRemoteObj(ip, puerto, "gestionUsuarios"));
+                boolean registrado = ( this.gestor.getGestionUsuarios() != null);
                 if (registrado) {
                     GUIAbrirSesion guiAbrirSesion = new GUIAbrirSesion();
                     SesionController sesionController = new SesionController(this.gestor, guiAbrirSesion);
