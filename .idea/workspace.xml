@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9d0ddf33-a2c0-4ee1-9c36-6729cc8d0e2b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cliente/utilidades/Utilidades.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gestion_usuarios/utilidades/RegistroC.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/seguimiento_usuarios/Servidor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/seguimiento_usuarios/sop_rmi/ISeguimientoUsuarios.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/seguimiento_usuarios/sop_rmi/SeguimientoUsuarios.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/seguimiento_usuarios/utilidades/Consola.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/seguimiento_usuarios/utilidades/RegistroS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gestion_usuarios/Servidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gestion_usuarios/Servidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gestion_usuarios/sop_rmi/GestionUsuarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gestion_usuarios/sop_rmi/GestionUsuarios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gestion_usuarios/utilidades/RegistroS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gestion_usuarios/utilidades/RegistroS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="22w66NFENV4d8h0BTGgZGXMjQH9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="seguimiento_usuarios.utilidades" />
+      <recent name="gestion_usuarios.utilidades" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Cliente">
+    <configuration name="Cliente" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cliente.Cliente" />
+      <module name="requerimiento" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cliente.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Servidor (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="seguimiento_usuarios.Servidor" />
+      <module name="requerimiento" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="seguimiento_usuarios.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Servidor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gestion_usuarios.Servidor" />
+      <module name="requerimiento" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gestion_usuarios.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Cliente" />
+        <item itemvalue="Application.Servidor" />
+        <item itemvalue="Application.Servidor (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9d0ddf33-a2c0-4ee1-9c36-6729cc8d0e2b" name="Changes" comment="" />
+      <created>1640736129938</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1640736129938</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

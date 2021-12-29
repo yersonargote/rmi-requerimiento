@@ -1,6 +1,8 @@
 package gestion_usuarios.sop_rmi;
 
 import gestion_usuarios.dto.*;
+import seguimiento_usuarios.sop_rmi.ISeguimientoUsuarios;
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
     private final List<PersonalDTO> personal;
     private final List<PacienteDTO> pacientes;
     private final List<CredencialDTO> usuarios;
+    private ISeguimientoUsuarios seguimientoUsuarios;
 
     public GestionUsuarios() throws RemoteException {
         super();
@@ -25,6 +28,10 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
         PersonalDTO admin = new PersonalDTO("cc", 12345678, "admin", "admin", "admin", "12345678");
         personal.add(admin);
         usuarios.add(admin);
+    }
+
+    public void setSeguimientoUsuarios(ISeguimientoUsuarios seguimientoUsuarios) {
+        this.seguimientoUsuarios = seguimientoUsuarios;
     }
 
     @Override
@@ -107,6 +114,8 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
         for (CredencialDTO usuario : this.usuarios) {
             if(usuario.getUsuario().equals(credencial.getUsuario()) && usuario.getClave().equals(credencial.getClave())){
                 tipoUsuario = usuario.getRol();
+                String mensaje = String.format("Usuario %s con rol %d a ingresado al sistema.", credencial.getUsuario(), tipoUsuario);
+                this.seguimientoUsuarios.notificacion(mensaje);
                 break;
             }
         }

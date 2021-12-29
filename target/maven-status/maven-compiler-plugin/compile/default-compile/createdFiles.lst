@@ -1,5 +1,3 @@
-cliente\presentacion\GUIAbrirSesion$1.class
-cliente\presentacion\GUIMenuAdmin$1.class
 gestion_usuarios\dto\CredencialDTO.class
 gestion_usuarios\dto\PacienteDTO.class
 gestion_usuarios\dto\ProgramaFisicoDTO.class
@@ -8,6 +6,7 @@ gestion_usuarios\sop_rmi\IGestionUsuarios.class
 cliente\presentacion\Menu.class
 cliente\utilidades\Parse.class
 cliente\presentacion\GUIMenuSecretaria$1.class
+cliente\utilidades\Utilidades.class
 gestion_usuarios\dto\ProgramaSemanaDTO.class
 gestion_usuarios\dto\ValoracionFisicaDTO.class
 gestion_usuarios\dto\EjercicioDTO.class
@@ -16,7 +15,6 @@ cliente\presentacion\MenuAdmin.class
 gestion_usuarios\utilidades\Consola.class
 cliente\utilidades\RegistroC.class
 gestion_usuarios\utilidades\Utilidades.class
-cliente\presentacion\GUIMenuAdmin$2.class
 cliente\utilidades\Consola.class
 gestion_usuarios\utilidades\RegistroS.class
 cliente\presentacion\GUIPrincipal.class
@@ -33,5 +31,4 @@ cliente\presentacion\SesionController.class
 cliente\presentacion\GUIMenuSecretaria.class
 cliente\presentacion\MenuPaf.class
 gestion_usuarios\sop_rmi\GestionUsuarios.class
-cliente\presentacion\GUIMenuAdmin$3.class
 cliente\presentacion\GUIMenuSecretaria$3.class

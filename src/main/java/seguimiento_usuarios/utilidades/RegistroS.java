@@ -1,4 +1,4 @@
-package gestion_usuarios.utilidades;
+package seguimiento_usuarios.utilidades;
 
 
 /**
