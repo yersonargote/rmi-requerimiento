@@ -4,8 +4,8 @@ package gestion_usuarios.dto;
  *
  * @author yerso
  */
-
 public class ValoracionFisicaDTO implements java.io.Serializable {
+
     int id;
     int idPaciente;
     String fecha;
@@ -110,4 +110,13 @@ public class ValoracionFisicaDTO implements java.io.Serializable {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%d,%d,%s,%d,%d,%d,%d,%d,%d,%s",
+                this.id, this.idPaciente, this.fecha, this.frecuenciaCardiacaReposo,
+                this.frecuenciaCardiacaActiva, this.estatura, this.brazo, this.pecho,
+                this.cintura, this.estado);
+    }
+
 }

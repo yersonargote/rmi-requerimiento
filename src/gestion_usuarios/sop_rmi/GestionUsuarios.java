@@ -2,25 +2,31 @@ package gestion_usuarios.sop_rmi;
 
 import cliente.sop_rmi.INotificacion;
 import gestion_usuarios.dto.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import seguimiento_usuarios.sop_rmi.ISeguimientoUsuarios;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  *
  * @author yerso
  */
-
 public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsuarios {
 
     private final List<PersonalDTO> personal;
     private final List<PacienteDTO> pacientes;
     private final List<CredencialDTO> usuarios;
     private ISeguimientoUsuarios seguimientoUsuarios;
-    
+
     private List<INotificacion> callbacks;
 
     public GestionUsuarios() throws RemoteException {
@@ -31,7 +37,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
         PersonalDTO admin = new PersonalDTO("cc", 12345678, "admin", "admin", "admin", "12345678");
         personal.add(admin);
         usuarios.add(admin);
-        
+
         callbacks = new ArrayList<>();
     }
 
@@ -59,7 +65,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
         boolean modificado = false;
         int indice_per = this.getIndicePersonal(personal.getId());
         int indice_usu = this.getIndiceUsuario(personal.getUsuario(), personal.getClave());
-        if(indice_per != -1 && indice_usu != -1) {
+        if (indice_per != -1 && indice_usu != -1) {
             this.personal.set(indice_per, personal);
             this.usuarios.set(indice_usu, personal);
             modificado = true;
@@ -122,7 +128,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
         System.out.println("Abriendo sesion.");
         int tipoUsuario = -1;
         for (CredencialDTO usuario : this.usuarios) {
-            if(usuario.getUsuario().equals(credencial.getUsuario()) && usuario.getClave().equals(credencial.getClave())){
+            if (usuario.getUsuario().equals(credencial.getUsuario()) && usuario.getClave().equals(credencial.getClave())) {
                 tipoUsuario = usuario.getRol();
                 String mensaje = String.format("Usuario %s con rol %d a ingresado al sistema.", credencial.getUsuario(), tipoUsuario);
                 this.seguimientoUsuarios.notificacion(mensaje);
@@ -153,16 +159,16 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
             this.usuarios.add(paciente);
             registrado = true;
             for (int jdx = 0; jdx < callbacks.size(); jdx++) {
-                            INotificacion notificacion = callbacks.get(jdx);
-                            try {
-                                notificacion.notificar(
-                                        String.format("Id: %d y nombre %s. Esta disponible para ser valorado.%n", 
-                                                paciente.getId(), paciente.getNombre())
-                                );
-                            } catch (RemoteException e) {
-                                System.out.println("Error: En el callback al registrar paciente.");
-                            }
-                        }
+                INotificacion notificacion = callbacks.get(jdx);
+                try {
+                    notificacion.notificar(
+                            String.format("Id: %d y nombre %s. Esta disponible para ser valorado.%n",
+                                    paciente.getId(), paciente.getNombre())
+                    );
+                } catch (RemoteException e) {
+                    System.out.println("Error: En el callback al registrar paciente.");
+                }
+            }
         }
         return registrado;
     }
@@ -210,8 +216,8 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
 
     @Override
     public boolean registrarValoracionFisica(ValoracionFisicaDTO valoracionFisica) throws RemoteException {
-        // TODO Auto-generated method stub
-        return false;
+        String info = valoracionFisica.toString();
+        return this.seguimientoUsuarios.addHistorial(valoracionFisica.getIdPaciente(), info);
     }
 
     @Override
@@ -228,8 +234,32 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
 
     @Override
     public ValoracionFisicaDTO consultarValoracionFisica(int id) throws RemoteException {
-        // TODO Auto-generated method stub
-        return null;
+        String dir = String.format("%s\\src\\seguimiento_usuarios\\historial", System.getProperty("user.dir"));
+        Set<String> directories = Stream.of(new File(dir).listFiles())
+                .filter(file -> !file.isDirectory())
+                .map(File::getName)
+                .collect(Collectors.toSet());
+
+        ValoracionFisicaDTO valoracionFisica = null;
+
+        for (String directory : directories) {
+            System.out.println(directory);
+            String path = String.format("historial%d.txt", id);
+            if (directory.equals(path)) {
+                File file = new File(path);
+                BufferedReader br = null;
+                try {
+                    br = new BufferedReader(new FileReader(file));
+
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        System.out.println(line);
+                    }
+                } catch (IOException ex) {
+                }
+            }
+        }
+        return valoracionFisica;
     }
 
     @Override

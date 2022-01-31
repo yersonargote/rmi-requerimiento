@@ -8,20 +8,20 @@ package gestion_usuarios.dto;
 import java.util.List;
 
 public class ProgramaSemanaDTO implements java.io.Serializable {
-   int dia;
+   String semana;
    List<EjercicioDTO> ejercicios;
 
-   public ProgramaSemanaDTO(int dia, List<EjercicioDTO> ejercicios) {
-      this.dia = dia;
+   public ProgramaSemanaDTO(String semana, List<EjercicioDTO> ejercicios) {
+      this.semana = semana;
       this.ejercicios = ejercicios;
    }
 
-   public int getDia() {
-      return dia;
+   public String getSemana() {
+      return semana;
    }
 
-   public void setDia(int dia) {
-      this.dia = dia;
+   public void setSemana(String dia) {
+      this.semana = semana;
    }
 
    public List<EjercicioDTO> getEjercicios() {

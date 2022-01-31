@@ -5,13 +5,10 @@
  */
 package cliente.presentacion;
 
-import cliente.Cliente;
-import gestion_usuarios.dto.CredencialDTO;
 import mvcf.AModel;
 import mvcf.AView;
 
 import javax.swing.*;
-import java.rmi.RemoteException;
 
 /**
  *

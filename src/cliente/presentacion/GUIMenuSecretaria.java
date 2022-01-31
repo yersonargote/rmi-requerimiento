@@ -1,18 +1,12 @@
 package cliente.presentacion;
 
-import cliente.Cliente;
-import cliente.utilidades.Parse;
-import gestion_usuarios.dto.PacienteDTO;
-import gestion_usuarios.utilidades.Utilidades;
-import java.rmi.RemoteException;
-import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
+
 import mvcf.AModel;
 import mvcf.AView;
 

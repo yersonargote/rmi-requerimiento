@@ -1,12 +1,11 @@
 package seguimiento_usuarios.sop_rmi;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.rmi.server.UnicastRemoteObject;
 import java.rmi.RemoteException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class SeguimientoUsuarios extends UnicastRemoteObject implements ISeguimientoUsuarios {
 
@@ -22,18 +21,13 @@ public class SeguimientoUsuarios extends UnicastRemoteObject implements ISeguimi
 
     @Override
     public boolean addHistorial(int id, String historial) throws RemoteException {
-        boolean ok = false;
-        String path = String.format("../historial/usuario%d", id);
-
-        try ( //Set true for append mode
-                BufferedWriter writer = new BufferedWriter(
-                        new FileWriter(path, true))) {
-            writer.write(historial);
-            ok = true;
+        String path = String.format("%s\\src\\seguimiento_usuarios\\historial\\usuario%d.txt", System.getProperty("user.dir"), id);
+        System.out.println(path);
+        try {
+            Files.write(Paths.get(path), historial.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
         } catch (IOException ex) {
-            Logger.getLogger(SeguimientoUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-            
+            System.out.println("Error: Al crear o agregar información al historial.");
         }
-        return ok;
+        return true;
     }
 }

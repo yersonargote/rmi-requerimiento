@@ -65,6 +65,24 @@ public class SesionController extends AActionController {
             System.out.println("Error al registrar callback.");
         }
     }
+    
+    private void menuPaf() {
+        GUIMenuPaf menuPaf = new GUIMenuPaf();
+        PafController pafController = new PafController(this.gestorUsuarios, menuPaf);
+        
+        this.vista.setVisible(false);
+        menuPaf.setVisible(true);
+        
+        // botones
+        menuPaf.getBtnRegistrarSemana().addActionListener(pafController);
+        menuPaf.getBtnRegistrarSemana().setActionCommand("semana");
+        menuPaf.getBtnElaborar().addActionListener(pafController);
+        menuPaf.getBtnElaborar().setActionCommand("programa");
+        menuPaf.getBtnRealizar().addActionListener(pafController);
+        menuPaf.getBtnRealizar().setActionCommand("valoracion");
+        menuPaf.getBtnAsistencia().addActionListener(pafController);
+        menuPaf.getBtnAsistencia().setActionCommand("asistencia");
+    }
 
     @Override
     public void actualizar(ActionEvent arg0) {
@@ -87,7 +105,7 @@ public class SesionController extends AActionController {
                         break;
                     case 2:
                         registrarCallback();
-                        this.vista.getLblMensajeErrorLogin().setText("Paf NO Implementado");
+                        menuPaf();
                         break;
                     case 3:
                         this.vista.getLblMensajeErrorLogin().setText("Paciente NO Implementado");
