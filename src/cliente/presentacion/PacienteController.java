@@ -53,13 +53,14 @@ public class PacienteController extends AActionController {
         try {
             valoracionFisicaDTO = this.gestor.getGestionUsuarios().consultarValoracionFisica(id);
         } catch (RemoteException ex) {
-            this.vista.getLblValoracionRes().setText("Error: No se pudo consultar la valoracion fisica del paciente\n" + ex.getMessage());
+            this.vista.getTxtValoracionRes().setText("Error: No se pudo consultar la valoracion fisica del paciente\n" + ex.getMessage());
         }
 
         if (valoracionFisicaDTO != null) {
-            this.vista.getLblValoracionRes().setText("Información: Valoracion fisica encontrada.");
+            String str = String.format("Información: Valoracion fisica encontrada.%n%s", valoracionFisicaDTO.toData());
+            this.vista.getTxtValoracionRes().setText(str);
         } else {
-            this.vista.getLblValoracionRes().setText("Error: Valoracion fisica NO encontrada.");
+            this.vista.getTxtValoracionRes().setText("Error: Valoracion fisica NO encontrada.");
         }
     }
 

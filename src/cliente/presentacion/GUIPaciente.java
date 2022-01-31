@@ -6,6 +6,7 @@ package cliente.presentacion;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import mvcf.AModel;
@@ -47,7 +48,8 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btnConsultarValoracion = new javax.swing.JButton();
-        lblValoracionRes = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtValoracionRes = new javax.swing.JTextArea();
         pnlConsultarA = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txt2Identificacion = new javax.swing.JTextField();
@@ -137,7 +139,10 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
 
         btnConsultarValoracion.setText("Consultar Valoracion");
 
-        lblValoracionRes.setText("-");
+        txtValoracionRes.setEditable(false);
+        txtValoracionRes.setColumns(20);
+        txtValoracionRes.setRows(5);
+        jScrollPane1.setViewportView(txtValoracionRes);
 
         javax.swing.GroupLayout pnlConsultarVLayout = new javax.swing.GroupLayout(pnlConsultarV);
         pnlConsultarV.setLayout(pnlConsultarVLayout);
@@ -156,8 +161,8 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtIdValoracion, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblValoracionRes, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(203, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         pnlConsultarVLayout.setVerticalGroup(
             pnlConsultarVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,9 +173,9 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
                 .addGroup(pnlConsultarVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtIdValoracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addComponent(lblValoracionRes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnConsultarValoracion)
                 .addGap(59, 59, 59))
         );
@@ -335,8 +340,8 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
         return btnConsultarValoracion;
     }    
 
-    public JLabel getLblValoracionRes() {
-        return lblValoracionRes;
+    public JTextArea getTxtValoracionRes() {
+        return txtValoracionRes;
     }
 
     public JTextField getTxtIdValoracion() {
@@ -352,9 +357,9 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JLabel lblValoracionRes;
     private javax.swing.JPanel pnlConsultarA;
     private javax.swing.JPanel pnlConsultarP;
     private javax.swing.JPanel pnlConsultarV;
@@ -364,6 +369,7 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
     private javax.swing.JTextField txt2Identificacion;
     private javax.swing.JTextField txtIdValoracion;
     private javax.swing.JTextField txtIdentificacionPlan;
+    private javax.swing.JTextArea txtValoracionRes;
     // End of variables declaration//GEN-END:variables
 
     @Override

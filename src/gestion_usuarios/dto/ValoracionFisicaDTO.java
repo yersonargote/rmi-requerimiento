@@ -113,10 +113,17 @@ public class ValoracionFisicaDTO implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return String.format("%d,%d,%s,%d,%d,%d,%d,%d,%d,%s",
+        return String.format("%d,%d,%s,%d,%d,%d,%d,%d,%d,%s%n",
                 this.id, this.idPaciente, this.fecha, this.frecuenciaCardiacaReposo,
                 this.frecuenciaCardiacaActiva, this.estatura, this.brazo, this.pecho,
                 this.cintura, this.estado);
     }
-
+    
+    public String toData() {
+        return "Valoracion Fisica.\n" + "Id Paciente: " + idPaciente + " - Fecha: " + fecha 
+                + "\nFrecuencia Cardiaca en Reposo: " + frecuenciaCardiacaReposo + " - Frecuencia Cardiaca Activa: " + frecuenciaCardiacaActiva
+                + "\nEstatura: " + estatura + " - Brazo: " + brazo + " - Pecho: " + pecho + " - Cintura: " + cintura + " - Estado:" + estado;
+    }
+    
+    
 }
