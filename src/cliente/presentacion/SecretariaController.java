@@ -6,6 +6,8 @@ import gestion_usuarios.dto.PacienteDTO;
 import gestion_usuarios.utilidades.Utilidades;
 import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 import mvcf.AActionController;
 import mvcf.AModel;
 import mvcf.AView;
@@ -73,11 +75,56 @@ public class SecretariaController extends AActionController {
     }
 
     private void consultarPaciente() {
-        
+        PacienteDTO pacienteDTO = null;
+        int id = Parse.StringToInt(this.vista.getTxtConsultaConsultar().getText());
+        try {
+            pacienteDTO = this.gestor.getGestionUsuarios().consultarPaciente(id);
+        } catch (RemoteException ex) {
+            this.vista.getLblMensajeErrorConsultar().setText("Error al consultar personal.");
+        }
+
+        if (pacienteDTO != null) {
+            this.vista.getLblMensajeErrorConsultar().setText("Personal encontrado.");
+            this.vista.getLblNombreConsultaRes().setText(pacienteDTO.getNombre());
+            this.vista.getLblTipoUsuarioConsultaRes().setText(pacienteDTO.getTipoUsuario());
+            this.vista.getLblUsuarioConsultaRes().setText(pacienteDTO.getUsuario());
+            this.vista.getLblPatologiaConsultarRes().setText(pacienteDTO.getPatologia());
+            this.vista.getLblFacultadConsultarRes().setText(pacienteDTO.getFacultad());
+            this.vista.getLblFechaIngresoConsultarRes().setText(pacienteDTO.getFechaIngreso());
+        } else {
+            this.vista.getLblMensajeErrorConsultar().setText("Personal no encontrado.");
+            this.vista.getLblNombreConsultaRes().setText("-");
+            this.vista.getLblTipoUsuarioConsultaRes().setText("-");
+            this.vista.getLblUsuarioConsultaRes().setText("-");
+            this.vista.getLblPatologiaConsultarRes().setText("-");
+            this.vista.getLblFacultadConsultarRes().setText("-");
+            this.vista.getLblFechaIngresoConsultarRes().setText("-");
+        }
     }
 
     private void listarPaciente() {
-        
+        List<PacienteDTO> pacientes = null;
+        DefaultTableModel modelo = (DefaultTableModel) this.vista.getTblListaPacientes().getModel();
+        Object fila[] = new Object[7];
+
+        try {
+            pacientes = this.gestor.getGestionUsuarios().listarPaciente();
+        } catch (RemoteException ex) {
+            this.vista.getLblMensajeErrorListar().setText("Error al listar personal.");
+        }
+
+        if (pacientes != null) {
+            for (PacienteDTO paciente : pacientes) {
+                fila[0] = paciente.getId();
+                fila[1] = paciente.getNombre();
+                fila[2] = paciente.getTipoUsuario();
+                fila[3] = paciente.getFacultad();
+                fila[4] = paciente.getUsuario();
+                fila[5] = paciente.getPatologia();
+                fila[6] = paciente.getFechaIngreso();
+                modelo.addRow(fila);
+            }
+        }
     }
     
 }

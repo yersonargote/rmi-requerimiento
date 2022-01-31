@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import mvcf.AModel;
@@ -82,7 +83,7 @@ public class GUIMenuSecretaria extends javax.swing.JFrame implements AView {
         pnlInformacionConsultar = new javax.swing.JPanel();
         lblNombreConsultar = new javax.swing.JLabel();
         lblNombreConsultaRes = new javax.swing.JLabel();
-        lblOcupacionConsultar = new javax.swing.JLabel();
+        lblTipoUsuarioConsulta = new javax.swing.JLabel();
         lblTipoUsuarioConsultaRes = new javax.swing.JLabel();
         lblUsuarioConsulta = new javax.swing.JLabel();
         lblUsuarioConsultaRes = new javax.swing.JLabel();
@@ -273,9 +274,9 @@ public class GUIMenuSecretaria extends javax.swing.JFrame implements AView {
         lblNombreConsultaRes.setText("-");
         pnlInformacionConsultar.add(lblNombreConsultaRes);
 
-        lblOcupacionConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblOcupacionConsultar.setText("Tipo de Usuario");
-        pnlInformacionConsultar.add(lblOcupacionConsultar);
+        lblTipoUsuarioConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTipoUsuarioConsulta.setText("Tipo de Usuario");
+        pnlInformacionConsultar.add(lblTipoUsuarioConsulta);
 
         lblTipoUsuarioConsultaRes.setText("-");
         pnlInformacionConsultar.add(lblTipoUsuarioConsultaRes);
@@ -319,11 +320,6 @@ public class GUIMenuSecretaria extends javax.swing.JFrame implements AView {
         pnlBotonConsultar.setLayout(new java.awt.GridLayout(2, 0));
 
         btnConsultar.setText("Consultar");
-        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarActionPerformed(evt);
-            }
-        });
         pnlBotonConsultar.add(btnConsultar);
         pnlBotonConsultar.add(lblMensajeErrorConsultar);
 
@@ -342,11 +338,6 @@ public class GUIMenuSecretaria extends javax.swing.JFrame implements AView {
         pnlNorteListar.add(lblTituloListar);
 
         btnListar.setText("Listar");
-        btnListar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListarActionPerformed(evt);
-            }
-        });
         pnlNorteListar.add(btnListar);
 
         pnlListarPersonal.add(pnlNorteListar, java.awt.BorderLayout.NORTH);
@@ -371,59 +362,6 @@ public class GUIMenuSecretaria extends javax.swing.JFrame implements AView {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        PacienteDTO pacienteDTO = null;
-        int id = Parse.StringToInt(txtConsultaConsultar.getText());
-//        try {
-//            pacienteDTO = cliente.getGestor().consultarPaciente(id);
-//        } catch (RemoteException ex) {
-//            lblMensajeErrorConsultar.setText("Error al consultar personal.");
-//        }
-
-        if (pacienteDTO != null) {
-            lblMensajeErrorConsultar.setText("Personal encontrado.");
-            lblNombreConsultaRes.setText(pacienteDTO.getNombre());
-            lblTipoUsuarioConsultaRes.setText(pacienteDTO.getTipoUsuario());
-            lblUsuarioConsultaRes.setText(pacienteDTO.getUsuario());
-            lblPatologiaConsultarRes.setText(pacienteDTO.getPatologia());
-            lblFacultadConsultarRes.setText(pacienteDTO.getFacultad());
-            lblFechaIngresoConsultarRes.setText(pacienteDTO.getFechaIngreso());
-        } else {
-            lblMensajeErrorConsultar.setText("Personal no encontrado.");
-            lblNombreConsultaRes.setText("-");
-            lblTipoUsuarioConsultaRes.setText("-");
-            lblUsuarioConsultaRes.setText("-");
-            lblFacultadConsultarRes.setText("-");
-            lblPatologiaConsultarRes.setText("-");
-            lblFechaIngresoConsultarRes.setText("-");
-        }
-    }//GEN-LAST:event_btnConsultarActionPerformed
-
-    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        List<PacienteDTO> pacientes = null;
-        DefaultTableModel modelo = (DefaultTableModel) tblListaPacientes.getModel();
-        Object fila[] = new Object[7];
-
-//        try {
-//            pacientes = this.cliente.getGestor().listarPaciente();
-//        } catch (RemoteException ex) {
-//            lblMensajeErrorListar.setText("Error al listar personal.");
-//        }
-
-        if (pacientes != null) {
-            for (PacienteDTO paciente : pacientes) {
-                fila[0] = paciente.getId();
-                fila[1] = paciente.getNombre();
-                fila[2] = paciente.getTipoUsuario();
-                fila[3] = paciente.getFacultad();
-                fila[4] = paciente.getUsuario();
-                fila[5] = paciente.getPatologia();
-                fila[6] = paciente.getFechaIngreso();
-                modelo.addRow(fila);
-            }
-        }
-    }//GEN-LAST:event_btnListarActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -511,6 +449,43 @@ public class GUIMenuSecretaria extends javax.swing.JFrame implements AView {
     public JLabel getLblMensajeErrorReg() {
         return lblMensajeErrorReg;
     }
+
+    public JLabel getLblFacultadConsultarRes() {
+        return lblFacultadConsultarRes;
+    }
+
+    public JLabel getLblFechaIngresoConsultarRes() {
+        return lblFechaIngresoConsultarRes;
+    }
+
+    public JLabel getLblMensajeErrorConsultar() {
+        return lblMensajeErrorConsultar;
+    }
+
+    public JLabel getLblMensajeErrorListar() {
+        return lblMensajeErrorListar;
+    }
+
+    public JLabel getLblNombreConsultaRes() {
+        return lblNombreConsultaRes;
+    }
+
+    public JLabel getLblPatologiaConsultarRes() {
+        return lblPatologiaConsultarRes;
+    }
+
+
+    public JLabel getLblUsuarioConsultaRes() {
+        return lblUsuarioConsultaRes;
+    }
+    
+    public JTable getTblListaPacientes() {
+        return tblListaPacientes;
+    }
+
+    public JLabel getLblTipoUsuarioConsultaRes() {
+        return lblTipoUsuarioConsultaRes;
+    }
 // Variables
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;
@@ -531,11 +506,11 @@ public class GUIMenuSecretaria extends javax.swing.JFrame implements AView {
     private javax.swing.JLabel lblNombreConsultaRes;
     private javax.swing.JLabel lblNombreConsultar;
     private javax.swing.JLabel lblNombreReg;
-    private javax.swing.JLabel lblOcupacionConsultar;
     private javax.swing.JLabel lblPatologiaConsultar;
     private javax.swing.JLabel lblPatologiaConsultarRes;
     private javax.swing.JLabel lblPatologiaReg;
     private javax.swing.JLabel lblTipoId;
+    private javax.swing.JLabel lblTipoUsuarioConsulta;
     private javax.swing.JLabel lblTipoUsuarioConsultaRes;
     private javax.swing.JLabel lblTipoUsuarioReg;
     private javax.swing.JLabel lblTituloConsultar;
