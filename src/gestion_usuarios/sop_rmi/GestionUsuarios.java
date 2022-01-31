@@ -160,7 +160,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
                                                 paciente.getId(), paciente.getNombre())
                                 );
                             } catch (RemoteException e) {
-                                e.printStackTrace();
+                                System.out.println("Error: En el callback al registrar paciente.");
                             }
                         }
         }
