@@ -1,6 +1,9 @@
 package cliente.presentacion;
 
 import cliente.negocio.GestorUsuarios;
+import cliente.sop_rmi.INotificacion;
+import cliente.sop_rmi.Notificacion;
+import cliente.utilidades.RegistroS;
 import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 
@@ -52,6 +55,16 @@ public class SesionController extends AActionController {
         menuSecretaria.getBtnListar().addActionListener(secretariaController);
         menuSecretaria.getBtnListar().setActionCommand("listar");
     }
+    
+    private void registrarCallback() {
+        try {
+            INotificacion callback = new Notificacion();
+            RegistroS.RegistrarObjetoRemoto(callback, "localhost", 12345, "callback");
+            this.gestorUsuarios.getGestionUsuarios().registrarCallback(callback);
+        } catch (RemoteException ex) {
+            System.out.println("Error al registrar callback.");
+        }
+    }
 
     @Override
     public void actualizar(ActionEvent arg0) {
@@ -73,6 +86,7 @@ public class SesionController extends AActionController {
                         menuSecretaria();
                         break;
                     case 2:
+                        registrarCallback();
                         this.vista.getLblMensajeErrorLogin().setText("Paf NO Implementado");
                         break;
                     case 3:

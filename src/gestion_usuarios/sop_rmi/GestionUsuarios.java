@@ -1,5 +1,6 @@
 package gestion_usuarios.sop_rmi;
 
+import cliente.sop_rmi.INotificacion;
 import gestion_usuarios.dto.*;
 import seguimiento_usuarios.sop_rmi.ISeguimientoUsuarios;
 
@@ -19,6 +20,8 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
     private final List<PacienteDTO> pacientes;
     private final List<CredencialDTO> usuarios;
     private ISeguimientoUsuarios seguimientoUsuarios;
+    
+    private List<INotificacion> callbacks;
 
     public GestionUsuarios() throws RemoteException {
         super();
@@ -28,6 +31,8 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
         PersonalDTO admin = new PersonalDTO("cc", 12345678, "admin", "admin", "admin", "12345678");
         personal.add(admin);
         usuarios.add(admin);
+        
+        callbacks = new ArrayList<>();
     }
 
     public void setSeguimientoUsuarios(ISeguimientoUsuarios seguimientoUsuarios) {
@@ -36,6 +41,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
 
     @Override
     public boolean registrarPersonal(PersonalDTO personal) throws RemoteException {
+        System.out.println("Registrando personal.");
         boolean registrado = false;
         int indice_per = this.getIndicePersonal(personal.getId());
         int indice_usu = this.getIndiceUsuario(personal.getUsuario(), personal.getClave());
@@ -49,6 +55,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
 
     @Override
     public boolean modificarPersonal(PersonalDTO personal) throws RemoteException {
+        System.out.println("Modificando personal.");
         boolean modificado = false;
         int indice_per = this.getIndicePersonal(personal.getId());
         int indice_usu = this.getIndiceUsuario(personal.getUsuario(), personal.getClave());
@@ -84,6 +91,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
 
     @Override
     public boolean eliminarPersonal(int id) throws RemoteException {
+        System.out.println("Eliminando personal.");
         boolean eliminado = false;
         int indice = this.getIndicePersonal(id);
         if (indice > 0) {
@@ -95,6 +103,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
 
     @Override
     public PersonalDTO consultarPersonal(int id) throws RemoteException {
+        System.out.println("Consultando personal.");
         int indice = this.getIndicePersonal(id);
         PersonalDTO personalDTO = null;
         if (indice > 0) {
@@ -110,6 +119,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
 
     @Override
     public int abrirSesion(CredencialDTO credencial) throws RemoteException {
+        System.out.println("Abriendo sesion.");
         int tipoUsuario = -1;
         for (CredencialDTO usuario : this.usuarios) {
             if(usuario.getUsuario().equals(credencial.getUsuario()) && usuario.getClave().equals(credencial.getClave())){
@@ -135,18 +145,31 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
 
     @Override
     public boolean registrarPaciente(PacienteDTO paciente) throws RemoteException {
+        System.out.println("Registrando paciente.");
         boolean registrado = false;
         int indice = this.getIndicePaciente(paciente.getId());
         if (indice == -1) {
             this.pacientes.add(paciente);
             this.usuarios.add(paciente);
             registrado = true;
+            for (int jdx = 0; jdx < callbacks.size(); jdx++) {
+                            INotificacion notificacion = callbacks.get(jdx);
+                            try {
+                                notificacion.notificar(
+                                        String.format("Id: %d y nombre %s. Esta disponible para ser valorado.%n", 
+                                                paciente.getId(), paciente.getNombre())
+                                );
+                            } catch (RemoteException e) {
+                                e.printStackTrace();
+                            }
+                        }
         }
         return registrado;
     }
 
     @Override
     public boolean modificarPaciente(PacienteDTO paciente) throws RemoteException {
+        System.out.println("Modificando paciente.");
         boolean modificado = false;
         int indice = this.getIndicePaciente(paciente.getId());
         if (indice >= 0) {
@@ -158,6 +181,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
 
     @Override
     public boolean eliminarPaciente(int id) throws RemoteException {
+        System.out.println("Eliminando paciente.");
         boolean eliminado = false;
         int indice = this.getIndicePaciente(id);
         if (indice >= 0) {
@@ -169,6 +193,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
 
     @Override
     public PacienteDTO consultarPaciente(int id) throws RemoteException {
+        System.out.println("Consultando Paciente.");
         PacienteDTO paciente = null;
         int indice = this.getIndicePaciente(id);
         if (indice >= 0) {
@@ -179,6 +204,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
 
     @Override
     public List<PacienteDTO> listarPaciente() throws RemoteException {
+        System.out.println("Listando pacientes.");
         return this.pacientes;
     }
 
@@ -300,5 +326,17 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
     public List<AsistenciaDTO> listarAsistencia(int id) throws RemoteException {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public boolean registrarCallback(INotificacion notificacion) throws RemoteException {
+        System.out.println("Registrando callback");
+        for (int i = 0; i < callbacks.size(); i++) {
+            if (callbacks.get(i).equals(notificacion)) {
+                return false;
+            }
+        }
+        callbacks.add(notificacion);
+        return true;
     }
 }

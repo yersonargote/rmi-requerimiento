@@ -6,9 +6,12 @@ package gestion_usuarios.sop_rmi;
  */
 
 import gestion_usuarios.dto.*;
+import cliente.sop_rmi.INotificacion;
 import java.util.List;
 
 public interface IGestionUsuarios extends java.rmi.Remote {
+    public boolean registrarCallback(INotificacion notificacion) throws java.rmi.RemoteException;
+    
     public boolean registrarPersonal(PersonalDTO personal) throws java.rmi.RemoteException;
 
     public boolean modificarPersonal(PersonalDTO personal) throws java.rmi.RemoteException;
