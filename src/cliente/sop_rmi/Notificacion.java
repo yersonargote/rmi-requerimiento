@@ -2,6 +2,7 @@ package cliente.sop_rmi;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,7 +16,9 @@ public class Notificacion extends UnicastRemoteObject implements INotificacion {
 
     @Override
     public boolean notificar(String info) throws RemoteException {
-        System.out.printf("Se acaba de registrar un paciente con la siguiente información: %s%n", info);
+        String msg = String.format("Se acaba de registrar un paciente con la siguiente información.%n%s%n", info);
+        System.out.printf(msg);
+        JOptionPane.showMessageDialog(null, msg, "Notificar Registro Paciente", JOptionPane.DEFAULT_OPTION);
         return true;
     }
     
