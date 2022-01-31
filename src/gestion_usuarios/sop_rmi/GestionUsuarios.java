@@ -12,9 +12,6 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  *
@@ -234,30 +231,27 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
 
     @Override
     public ValoracionFisicaDTO consultarValoracionFisica(int id) throws RemoteException {
-        String dir = String.format("%s\\src\\seguimiento_usuarios\\historial", System.getProperty("user.dir"));
-        Set<String> directories = Stream.of(new File(dir).listFiles())
-                .filter(file -> !file.isDirectory())
-                .map(File::getName)
-                .collect(Collectors.toSet());
-
+        System.out.println("Ejecutando valoracion fisica.");
+        String path = String.format("%s\\src\\seguimiento_usuarios\\historial\\usuario%d.txt", System.getProperty("user.dir"), id);
         ValoracionFisicaDTO valoracionFisica = null;
+        File file = new File(path);
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(file));
 
-        for (String directory : directories) {
-            System.out.println(directory);
-            String path = String.format("historial%d.txt", id);
-            if (directory.equals(path)) {
-                File file = new File(path);
-                BufferedReader br = null;
-                try {
-                    br = new BufferedReader(new FileReader(file));
-
-                    String line;
-                    while ((line = br.readLine()) != null) {
-                        System.out.println(line);
-                    }
-                } catch (IOException ex) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] partes = line.split(",");
+                if (partes.length == 10) {
+                    valoracionFisica = new ValoracionFisicaDTO(Integer.parseInt(partes[0]), Integer.parseInt(partes[1]),
+                            partes[2], Integer.parseInt(partes[3]), Integer.parseInt(partes[4]), Integer.parseInt(partes[5]),
+                            Integer.parseInt(partes[6]), Integer.parseInt(partes[7]), Integer.parseInt(partes[8]), partes[9]);
                 }
             }
+        } catch (IOException ex) {
+        }
+        if (valoracionFisica != null) {
+            System.out.println("valoracion fisica " + valoracionFisica.getIdPaciente());
         }
         return valoracionFisica;
     }

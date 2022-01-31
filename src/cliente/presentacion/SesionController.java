@@ -83,6 +83,22 @@ public class SesionController extends AActionController {
         menuPaf.getBtnAsistencia().addActionListener(pafController);
         menuPaf.getBtnAsistencia().setActionCommand("asistencia");
     }
+    
+    private void menuPaciente() {
+        GUIPaciente menuPaciente = new GUIPaciente();
+        PacienteController pacienteController = new PacienteController(this.gestorUsuarios, menuPaciente);
+        
+        this.vista.setVisible(false);
+        menuPaciente.setVisible(true);
+        
+        // botones
+        menuPaciente.getBtnConsultarValoracion().addActionListener(pacienteController);
+        menuPaciente.getBtnConsultarValoracion().setActionCommand("valoracion");
+//        menuPaciente.getBtnElaborar().addActionListener(pafController);
+//        menuPaciente.getBtnElaborar().setActionCommand("programa");
+//        menuPaciente.getBtnRealizar().addActionListener(pafController);
+//        menuPaciente.getBtnRealizar().setActionCommand("valoracion");
+    }
 
     @Override
     public void actualizar(ActionEvent arg0) {
@@ -108,7 +124,7 @@ public class SesionController extends AActionController {
                         menuPaf();
                         break;
                     case 3:
-                        this.vista.getLblMensajeErrorLogin().setText("Paciente NO Implementado");
+                        menuPaciente();
                         break;
                     default:
                         this.vista.getLblMensajeErrorLogin().setText("Credenciales NO VALIDAS");
@@ -117,4 +133,5 @@ public class SesionController extends AActionController {
                 break;
         }
     }
+
 }
