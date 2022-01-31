@@ -6,13 +6,20 @@ import gestion_usuarios.dto.PacienteDTO;
 import gestion_usuarios.utilidades.Utilidades;
 import java.rmi.RemoteException;
 import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import mvcf.AModel;
+import mvcf.AView;
 
 /**
  *
  * @author yerso
  */
-public class GUIMenuSecretaria extends javax.swing.JFrame {
+public class GUIMenuSecretaria extends javax.swing.JFrame implements AView {
 
     /**
      * Creates new form GUIMenuAdmin
@@ -203,11 +210,6 @@ public class GUIMenuSecretaria extends javax.swing.JFrame {
         pnlBotonRegistrar.setLayout(new java.awt.GridLayout(2, 0));
 
         btnRegistrar.setText("Registrar");
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
-            }
-        });
         pnlBotonRegistrar.add(btnRegistrar);
         pnlBotonRegistrar.add(lblMensajeErrorReg);
 
@@ -370,39 +372,6 @@ public class GUIMenuSecretaria extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        String tipoUsuario = "", nombreCompleto, facultad, usuario, clave, fechaIngreso, patologia;
-        int id;
-        boolean registrado = false;
-
-        nombreCompleto = txtNombreReg.getText();
-        id = Parse.StringToInt(txtIdReg.getText());
-
-        if (rbtnDocenteReg.isSelected()) {
-            tipoUsuario = "docente";
-        } else if (rbtnAdministrativoReg.isSelected()) {
-            tipoUsuario = "administrativo";
-        }
-
-        usuario = txtUsuarioReg.getText();
-        clave = String.valueOf(pssClaveReg.getPassword());
-        fechaIngreso = Utilidades.fechaActual();
-        patologia = txtPatologiaReg.getText();
-        facultad = txtFacultadReg.getText();
-        PacienteDTO paciente = new PacienteDTO(usuario, clave, id, nombreCompleto, facultad, tipoUsuario, fechaIngreso, patologia);
-//        try {
-//            registrado = this.cliente.getGestor().registrarPaciente(paciente);
-//        } catch (RemoteException ex) {
-//            this.lblMensajeErrorReg.setText("Error: No se pudo registrar el paciente\n" + ex.getMessage());
-//        }
-
-        if (registrado) {
-            this.lblMensajeErrorReg.setText("Información: Paciente registrado");
-        } else {
-            this.lblMensajeErrorReg.setText("Error: Paciente NO registrado");
-        }
-    }//GEN-LAST:event_btnRegistrarActionPerformed
-
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         PacienteDTO pacienteDTO = null;
         int id = Parse.StringToInt(txtConsultaConsultar.getText());
@@ -491,7 +460,58 @@ public class GUIMenuSecretaria extends javax.swing.JFrame {
 //        });
 //    }
 
-    // Variables
+    public JButton getBtnConsultar() {
+        return btnConsultar;
+    }
+
+    public JButton getBtnListar() {
+        return btnListar;
+    }
+
+    public JButton getBtnRegistrar() {
+        return btnRegistrar;
+    }
+    
+    public JTextField getTxtNombreReg() {    
+        return txtNombreReg;
+    }
+
+    public JTextField getTxtIdReg() {
+        return txtIdReg;
+    }
+
+    public JRadioButton getRbtnDocenteReg() {
+        return rbtnDocenteReg;
+    }
+
+    public JRadioButton getRbtnAdministrativoReg() {
+        return rbtnAdministrativoReg;
+    }
+
+    public JTextField getTxtUsuarioReg() {
+        return txtUsuarioReg;
+    }
+
+    public JTextField getTxtConsultaConsultar() {
+        return txtConsultaConsultar;
+    }
+
+    public JTextField getTxtFacultadReg() {
+        return txtFacultadReg;
+    }
+
+    public JTextField getTxtPatologiaReg() {
+        return txtPatologiaReg;
+    }
+
+    public JPasswordField getPssClaveReg() {
+        return pssClaveReg;
+    }
+
+    public JLabel getLblMensajeErrorReg() {
+        return lblMensajeErrorReg;
+    }
+// Variables
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnListar;
@@ -561,4 +581,8 @@ public class GUIMenuSecretaria extends javax.swing.JFrame {
     private javax.swing.JTextField txtPatologiaReg;
     private javax.swing.JTextField txtUsuarioReg;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actualizar(AModel arg0) {
+    }
 }

@@ -37,6 +37,21 @@ public class SesionController extends AActionController {
         menuAdmin.getBtnListar().addActionListener(adminController);
         menuAdmin.getBtnListar().setActionCommand("listar");
     }
+    
+    private void menuSecretaria() {
+        GUIMenuSecretaria menuSecretaria = new GUIMenuSecretaria();
+        SecretariaController secretariaController = new SecretariaController(this.gestorUsuarios, menuSecretaria);
+        
+        this.vista.setVisible(false);
+        menuSecretaria.setVisible(true);
+        
+        menuSecretaria.getBtnRegistrar().addActionListener(secretariaController);
+        menuSecretaria.getBtnRegistrar().setActionCommand("registrar");
+        menuSecretaria.getBtnConsultar().addActionListener(secretariaController);
+        menuSecretaria.getBtnConsultar().setActionCommand("consultar");
+        menuSecretaria.getBtnListar().addActionListener(secretariaController);
+        menuSecretaria.getBtnListar().setActionCommand("listar");
+    }
 
     @Override
     public void actualizar(ActionEvent arg0) {
@@ -55,7 +70,7 @@ public class SesionController extends AActionController {
                         menuAdmin();
                         break;
                     case 1:
-                        this.vista.getLblMensajeErrorLogin().setText("Secretaria NO Implementado");
+                        menuSecretaria();
                         break;
                     case 2:
                         this.vista.getLblMensajeErrorLogin().setText("Paf NO Implementado");
