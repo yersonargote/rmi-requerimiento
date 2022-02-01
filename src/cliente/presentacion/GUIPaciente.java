@@ -5,10 +5,8 @@
 package cliente.presentacion;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 import mvcf.AModel;
 import mvcf.AView;
 
@@ -23,8 +21,6 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
      */
     public GUIPaciente() {
          initComponents();
-         String []info = new String[3];
-         this.tbl2ConsultarAsistencia.setValueAt("X", 2, 2);
     }
 
     /**
@@ -41,8 +37,8 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtIdentificacionPlan = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblConsultarPlan = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtaPlanFisicoRes = new javax.swing.JTextArea();
         pnlConsultarV = new javax.swing.JPanel();
         txtIdValoracion = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -54,8 +50,6 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
         jLabel3 = new javax.swing.JLabel();
         txtIdConsultarAsistencia = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tbl2ConsultarAsistencia = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         txtaConsultarAsistencia = new javax.swing.JTextArea();
         btnConsultarAsistencia = new javax.swing.JButton();
@@ -66,40 +60,9 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
 
         jLabel2.setText("Identificación");
 
-        tblConsultarPlan.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"1", null, null, null, null, null, null, null, null, null},
-                {"2", "", null, null, null, null, null, null, null, null},
-                {"3", null, null, null, null, null, null, null, null, null},
-                {"4", null, null, null, null, null, null, null, null, null},
-                {"5", null, null, null, null, null, null, null, null, null},
-                {"6", null, null, null, null, null, null, null, null, null},
-                {"7", null, null, null, null, null, null, null, null, null},
-                {"8", null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Semana", "Ejercicio1", "Cant", "Peso", "Ejercicio2", "Cant", "Peso", "Ejercicio3", "Cant", "Peso"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true, true, true, true, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblConsultarPlan.setName(""); // NOI18N
-        jScrollPane2.setViewportView(tblConsultarPlan);
-        if (tblConsultarPlan.getColumnModel().getColumnCount() > 0) {
-            tblConsultarPlan.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tblConsultarPlan.getColumnModel().getColumn(2).setPreferredWidth(50);
-            tblConsultarPlan.getColumnModel().getColumn(3).setPreferredWidth(50);
-            tblConsultarPlan.getColumnModel().getColumn(5).setPreferredWidth(50);
-            tblConsultarPlan.getColumnModel().getColumn(6).setPreferredWidth(50);
-            tblConsultarPlan.getColumnModel().getColumn(8).setPreferredWidth(50);
-            tblConsultarPlan.getColumnModel().getColumn(9).setPreferredWidth(50);
-        }
+        txtaPlanFisicoRes.setColumns(20);
+        txtaPlanFisicoRes.setRows(5);
+        jScrollPane3.setViewportView(txtaPlanFisicoRes);
 
         javax.swing.GroupLayout pnlConsultarPLayout = new javax.swing.GroupLayout(pnlConsultarP);
         pnlConsultarP.setLayout(pnlConsultarPLayout);
@@ -108,17 +71,17 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
             .addGroup(pnlConsultarPLayout.createSequentialGroup()
                 .addGroup(pnlConsultarPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlConsultarPLayout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtIdentificacionPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlConsultarPLayout.createSequentialGroup()
                         .addGap(298, 298, 298)
                         .addComponent(jLabel1))
                     .addGroup(pnlConsultarPLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                        .addGap(116, 116, 116)
+                        .addGroup(pnlConsultarPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlConsultarPLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtIdentificacionPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         pnlConsultarPLayout.setVerticalGroup(
             pnlConsultarPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,9 +92,9 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
                 .addGroup(pnlConsultarPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtIdentificacionPlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         tbpPrincipal.addTab("Plan fisico", pnlConsultarP);
@@ -191,34 +154,6 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
 
         jLabel4.setText("Consultar Asistencia");
 
-        tbl2ConsultarAsistencia.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        tbl2ConsultarAsistencia.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"1", null, null, null, null, null, null, null},
-                {"2", "", null, null, null, null, null, null},
-                {"3", null, null, null, null, null, null, null},
-                {"4", null, "", null, null, null, null, null},
-                {"5", null, null, null, null, null, null, null},
-                {"6", null, null, null, null, null, null, null},
-                {"7", null, null, null, null, null, null, null},
-                {"8", null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Semana", "Dia1", "Dia2", "Dia3", "Dia4", "Dia5", "Dia6", "Dia7"
-            }
-        ));
-        tbl2ConsultarAsistencia.setName(""); // NOI18N
-        jScrollPane3.setViewportView(tbl2ConsultarAsistencia);
-        if (tbl2ConsultarAsistencia.getColumnModel().getColumnCount() > 0) {
-            tbl2ConsultarAsistencia.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tbl2ConsultarAsistencia.getColumnModel().getColumn(2).setPreferredWidth(20);
-            tbl2ConsultarAsistencia.getColumnModel().getColumn(3).setPreferredWidth(20);
-            tbl2ConsultarAsistencia.getColumnModel().getColumn(4).setPreferredWidth(20);
-            tbl2ConsultarAsistencia.getColumnModel().getColumn(5).setPreferredWidth(20);
-            tbl2ConsultarAsistencia.getColumnModel().getColumn(6).setPreferredWidth(20);
-            tbl2ConsultarAsistencia.getColumnModel().getColumn(7).setPreferredWidth(20);
-        }
-
         txtaConsultarAsistencia.setColumns(20);
         txtaConsultarAsistencia.setRows(5);
         jScrollPane4.setViewportView(txtaConsultarAsistencia);
@@ -230,21 +165,21 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
         pnlConsultarALayout.setHorizontalGroup(
             pnlConsultarALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlConsultarALayout.createSequentialGroup()
-                .addGap(119, 119, 119)
                 .addGroup(pnlConsultarALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlConsultarALayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtIdConsultarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addComponent(btnConsultarAsistencia)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pnlConsultarALayout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 16, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlConsultarALayout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addGroup(pnlConsultarALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlConsultarALayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtIdConsultarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnConsultarAsistencia)))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
         pnlConsultarALayout.setVerticalGroup(
             pnlConsultarALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,11 +192,8 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
                         .addComponent(txtIdConsultarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnConsultarAsistencia))
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addGroup(pnlConsultarALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane4)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         tbpPrincipal.addTab("Asistencia", pnlConsultarA);
@@ -376,6 +308,10 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
     public JButton getBtnConsultarAsistencia() {
         return btnConsultarAsistencia;
     }
+
+    public JTextArea getTxtaPlanFisicoRes() {
+        return txtaPlanFisicoRes;
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -388,20 +324,18 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JPanel pnlConsultarA;
     private javax.swing.JPanel pnlConsultarP;
     private javax.swing.JPanel pnlConsultarV;
-    private javax.swing.JTable tbl2ConsultarAsistencia;
-    private javax.swing.JTable tblConsultarPlan;
     private javax.swing.JTabbedPane tbpPrincipal;
     private javax.swing.JTextField txtIdConsultarAsistencia;
     private javax.swing.JTextField txtIdValoracion;
     private javax.swing.JTextField txtIdentificacionPlan;
     private javax.swing.JTextArea txtValoracionRes;
     private javax.swing.JTextArea txtaConsultarAsistencia;
+    private javax.swing.JTextArea txtaPlanFisicoRes;
     // End of variables declaration//GEN-END:variables
 
     @Override

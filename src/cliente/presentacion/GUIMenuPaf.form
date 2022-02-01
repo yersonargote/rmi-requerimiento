@@ -337,24 +337,18 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="cbxSemanas" min="-2" pref="112" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnRegistrarSemana" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                      <Component id="btnElaborar" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="spP3" min="-2" pref="70" max="-2" attributes="0"/>
-                                          <Component id="spP1" min="-2" pref="70" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="spP3" min="-2" pref="70" max="-2" attributes="0"/>
+                                  <Component id="spP1" min="-2" pref="70" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="spP2" min="-2" pref="70" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="btnElaborar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnRegistrarSemana" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -368,6 +362,7 @@
                               <Component id="jcFechaElaborar" min="-2" pref="99" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -393,7 +388,7 @@
                       <EmptySpace pref="103" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cbxSemanas" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnRegistrarSemana" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnElaborar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -432,7 +427,7 @@
                                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                       <Component id="spP2" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                                       <Component id="lblEjercicio8" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Component id="btnElaborar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnRegistrarSemana" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
