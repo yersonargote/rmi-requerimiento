@@ -5,7 +5,6 @@ import gestion_usuarios.dto.AsistenciaDTO;
 import gestion_usuarios.dto.ValoracionFisicaDTO;
 import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.List;
 import mvcf.AActionController;
 import mvcf.AModel;

@@ -58,6 +58,7 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
         tbl2ConsultarAsistencia = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         txtaConsultarAsistencia = new javax.swing.JTextArea();
+        btnConsultarAsistencia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -222,6 +223,8 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
         txtaConsultarAsistencia.setRows(5);
         jScrollPane4.setViewportView(txtaConsultarAsistencia);
 
+        btnConsultarAsistencia.setText("Consultar Asistencia");
+
         javax.swing.GroupLayout pnlConsultarALayout = new javax.swing.GroupLayout(pnlConsultarA);
         pnlConsultarA.setLayout(pnlConsultarALayout);
         pnlConsultarALayout.setHorizontalGroup(
@@ -234,12 +237,14 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtIdConsultarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4))
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnConsultarAsistencia)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pnlConsultarALayout.createSequentialGroup()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 16, Short.MAX_VALUE))
         );
         pnlConsultarALayout.setVerticalGroup(
             pnlConsultarALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,7 +253,9 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addGroup(pnlConsultarALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtIdConsultarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlConsultarALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtIdConsultarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnConsultarAsistencia))
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(pnlConsultarALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -365,9 +372,14 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
     public JTextArea getTxtaConsultarAsistencia() {
         return txtaConsultarAsistencia;
     }
+
+    public JButton getBtnConsultarAsistencia() {
+        return btnConsultarAsistencia;
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConsultarAsistencia;
     private javax.swing.JButton btnConsultarValoracion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
