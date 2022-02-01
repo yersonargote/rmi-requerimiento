@@ -1,9 +1,12 @@
 package cliente.presentacion;
 
 import cliente.negocio.GestorUsuarios;
+import gestion_usuarios.dto.AsistenciaDTO;
 import gestion_usuarios.dto.ValoracionFisicaDTO;
 import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
 import mvcf.AActionController;
 import mvcf.AModel;
 import mvcf.AView;
@@ -43,6 +46,24 @@ public class PacienteController extends AActionController {
     }
 
     private void consultarAsistencia() {
+        int id = Integer.parseInt(this.vista.getTxtIdConsultarAsistencia().getText());
+        
+        List<AsistenciaDTO> asistencias = null;
+        
+        try {
+            asistencias = this.gestor.getGestionUsuarios().consultarAsistencia(id);
+        } catch (RemoteException ex) {
+            this.vista.getTxtaConsultarAsistencia().setText("Error: No se pudo consultar asistencias del paciente\n" + ex.getMessage());
+        }
+        if (asistencias == null) {
+            this.vista.getTxtaConsultarAsistencia().setText("No se encontraron asistencias del paciente.");
+            return;
+        }
+        StringBuilder str = new StringBuilder();
+        for (AsistenciaDTO asistencia : asistencias) {
+            str.append(asistencia.toPrint());
+        }
+        this.vista.getTxtaConsultarAsistencia().setText(str.toString());
     }
 
     private void consultarValoracion() {

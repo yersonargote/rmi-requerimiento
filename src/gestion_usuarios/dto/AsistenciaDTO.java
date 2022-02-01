@@ -49,5 +49,13 @@ public class AsistenciaDTO implements java.io.Serializable {
     public void setObservacion(String observacion) {
         this.observacion = observacion;
     }
+    
+    public String toCsv() {
+        return String.format("%d,%d,%s,%s,%n", this.id, this.idPaciente, this.fecha, this.observacion);
+    }
+    
+    public String toPrint() {
+        return String.format("Id: %d%nId paciente: %d%nFecha: %s%nObservacion: %s%n", this.id, this.idPaciente, this.fecha, this.observacion);
+    }
 
 }

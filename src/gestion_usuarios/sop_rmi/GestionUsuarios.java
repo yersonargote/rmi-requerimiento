@@ -231,7 +231,7 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
 
     @Override
     public ValoracionFisicaDTO consultarValoracionFisica(int id) throws RemoteException {
-        System.out.println("Ejecutando valoracion fisica.");
+        System.out.println("Valoracion fisica.");
         String path = String.format("%s\\src\\seguimiento_usuarios\\historial\\usuario%d.txt", System.getProperty("user.dir"), id);
         ValoracionFisicaDTO valoracionFisica = null;
         File file = new File(path);
@@ -251,8 +251,9 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
         } catch (IOException ex) {
         }
         if (valoracionFisica != null) {
-            System.out.println("valoracion fisica " + valoracionFisica.getIdPaciente());
-        }
+            System.out.println("Valoracion fisica encontrada.");
+        } else
+            System.out.println("Valoracion fisica NO encontrada.");
         return valoracionFisica;
     }
 
@@ -324,8 +325,8 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
 
     @Override
     public boolean registrarAsistencia(AsistenciaDTO asistencia) throws RemoteException {
-        // TODO Auto-generated method stub
-        return false;
+        System.out.println("Registrando asistencia.");
+        return this.seguimientoUsuarios.addAsistencia(asistencia.toCsv());
     }
 
     @Override
@@ -341,9 +342,33 @@ public class GestionUsuarios extends UnicastRemoteObject implements IGestionUsua
     }
 
     @Override
-    public AsistenciaDTO consultarAsistencia(int id) throws RemoteException {
-        // TODO Auto-generated method stub
-        return null;
+    public List<AsistenciaDTO> consultarAsistencia(int id) throws RemoteException {
+        System.out.println("Consultando asistencia.");
+        String path = String.format("%s\\src\\seguimiento_usuarios\\listadoAsistencia.txt", System.getProperty("user.dir"));
+        AsistenciaDTO asistenciaDTO = null;
+        File file = new File(path);
+        BufferedReader br = null;
+        List<AsistenciaDTO> asistencias = new ArrayList<>();
+        try {
+            br = new BufferedReader(new FileReader(file));
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] partes = line.split(",");
+                if (partes.length == 4 && Integer.parseInt(partes[0]) == id) {
+                    asistenciaDTO = new AsistenciaDTO(Integer.parseInt(partes[0]), Integer.parseInt(partes[1]), partes[2], partes[3]);
+                    asistencias.add(asistenciaDTO);
+                }
+            }
+        } catch (IOException ex) {
+        } finally {
+            try {
+                br.close();
+            } catch (IOException ex) {
+                System.out.println("No se pudo cerrar el flujo.");
+            }
+        }
+        return asistencias;
     }
 
     @Override

@@ -27,7 +27,23 @@ public class SeguimientoUsuarios extends UnicastRemoteObject implements ISeguimi
             Files.write(Paths.get(path), historial.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
         } catch (IOException ex) {
             System.out.println("Error: Al crear o agregar información al historial.");
+            return false;
         }
         return true;
     }
+
+    @Override
+    public boolean addAsistencia(String asistencia) throws RemoteException {
+        String path = String.format("%s\\src\\seguimiento_usuarios\\listadoAsistencia.txt", System.getProperty("user.dir"));
+        System.out.println(path);
+        try {
+            Files.write(Paths.get(path), asistencia.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        } catch (IOException ex) {
+            System.out.println("Error: Al crear o agregar información de asistencia.");
+            return false;
+        }
+        return true;
+    }
+    
+    
 }

@@ -70,7 +70,7 @@ public interface IGestionUsuarios extends java.rmi.Remote {
 
     public boolean eliminarAsistencia(int id) throws java.rmi.RemoteException;
 
-    public AsistenciaDTO consultarAsistencia(int id) throws java.rmi.RemoteException;
+    public List<AsistenciaDTO> consultarAsistencia(int id) throws java.rmi.RemoteException;
 
     public List<AsistenciaDTO> listarAsistencia(int id) throws java.rmi.RemoteException;
 }

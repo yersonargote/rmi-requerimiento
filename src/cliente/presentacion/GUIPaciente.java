@@ -52,10 +52,12 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
         txtValoracionRes = new javax.swing.JTextArea();
         pnlConsultarA = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        txt2Identificacion = new javax.swing.JTextField();
+        txtIdConsultarAsistencia = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbl2ConsultarAsistencia = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtaConsultarAsistencia = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -182,6 +184,8 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
 
         tbpPrincipal.addTab("Valoracion", pnlConsultarV);
 
+        pnlConsultarA.setPreferredSize(new java.awt.Dimension(627, 358));
+
         jLabel3.setText("Identificación");
 
         jLabel4.setText("Consultar Asistencia");
@@ -214,24 +218,28 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
             tbl2ConsultarAsistencia.getColumnModel().getColumn(7).setPreferredWidth(20);
         }
 
+        txtaConsultarAsistencia.setColumns(20);
+        txtaConsultarAsistencia.setRows(5);
+        jScrollPane4.setViewportView(txtaConsultarAsistencia);
+
         javax.swing.GroupLayout pnlConsultarALayout = new javax.swing.GroupLayout(pnlConsultarA);
         pnlConsultarA.setLayout(pnlConsultarALayout);
         pnlConsultarALayout.setHorizontalGroup(
             pnlConsultarALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlConsultarALayout.createSequentialGroup()
-                .addGroup(pnlConsultarALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(119, 119, 119)
+                .addGroup(pnlConsultarALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlConsultarALayout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlConsultarALayout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addGroup(pnlConsultarALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pnlConsultarALayout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt2Identificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4))))
-                .addContainerGap(138, Short.MAX_VALUE))
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtIdConsultarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4))
+                .addContainerGap(317, Short.MAX_VALUE))
+            .addGroup(pnlConsultarALayout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlConsultarALayout.setVerticalGroup(
             pnlConsultarALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,10 +248,12 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addGroup(pnlConsultarALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt2Identificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIdConsultarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(pnlConsultarALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -347,6 +357,14 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
     public JTextField getTxtIdValoracion() {
         return txtIdValoracion;
     }
+
+    public JTextField getTxtIdConsultarAsistencia() {
+        return txtIdConsultarAsistencia;
+    }
+
+    public JTextArea getTxtaConsultarAsistencia() {
+        return txtaConsultarAsistencia;
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -360,16 +378,18 @@ public class GUIPaciente extends javax.swing.JFrame implements AView {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JPanel pnlConsultarA;
     private javax.swing.JPanel pnlConsultarP;
     private javax.swing.JPanel pnlConsultarV;
     private javax.swing.JTable tbl2ConsultarAsistencia;
     private javax.swing.JTable tblConsultarPlan;
     private javax.swing.JTabbedPane tbpPrincipal;
-    private javax.swing.JTextField txt2Identificacion;
+    private javax.swing.JTextField txtIdConsultarAsistencia;
     private javax.swing.JTextField txtIdValoracion;
     private javax.swing.JTextField txtIdentificacionPlan;
     private javax.swing.JTextArea txtValoracionRes;
+    private javax.swing.JTextArea txtaConsultarAsistencia;
     // End of variables declaration//GEN-END:variables
 
     @Override
